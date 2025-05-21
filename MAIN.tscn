@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckxaf4t7cong3"]
+
+[ext_resource type="Texture2D" uid="uid://b5xk3e8aqnc7j" path="res://ASSET/Sprite/creatures_transparent.png" id="1_78rud"]
+[ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://main.gd" id="1_rf5wo"]
+[ext_resource type="PackedScene" uid="uid://7rynbk4bvg0j" path="res://world.tscn" id="2_rf5wo"]
+[ext_resource type="PackedScene" uid="uid://dmypali52j1gn" path="res://example_balloon.tscn" id="3_ao1bj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm5h3"]
+atlas = ExtResource("1_78rud")
+region = Rect2(64, 143, 17, 17)
+
+[node name="Word" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rf5wo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Squad" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Squad"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Squad/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_tm5h3")
+stretch_mode = 4
+
+[node name="Center" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 0
+
+[node name="Fight_Zone" type="PanelContainer" parent="HBoxContainer/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="World_Zone" type="PanelContainer" parent="HBoxContainer/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer/Center/World_Zone"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/Center/World_Zone/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(675, 354)
+render_target_update_mode = 4
+
+[node name="World" parent="HBoxContainer/Center/World_Zone/SubViewportContainer/SubViewport" instance=ExtResource("2_rf5wo")]
+unique_name_in_owner = true
+
+[node name="Reponse" type="PanelContainer" parent="HBoxContainer/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ExampleBalloon" parent="HBoxContainer/Center/Reponse" instance=ExtResource("3_ao1bj")]
+layout_mode = 2
+
+[node name="Enemy_Squad" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[editable path="HBoxContainer/Center/Reponse/ExampleBalloon"]
