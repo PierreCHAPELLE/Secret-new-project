@@ -1,0 +1,74 @@
+extends Camera2D
+class_name PanningCamera2D
+@onready var map: TileMapLayer = %Map
+
+@export var CameraLimit : CollisionShape2D
+
+@export var MIN_ZOOM: float = 1
+@export var MAX_ZOOM: float = 3
+@export var ZOOM_RATE: float = 8.0
+@export var ZOOM_INCREMENT: float = 0.1
+
+@export var _target_zoom: float = 2
+
+var _tween: Tween = create_tween()
+var is_dragging := false
+var last_mouse_position := Vector2.ZERO
+
+func _physics_process(delta: float) -> void:
+	zoom = lerp(zoom, _target_zoom * Vector2.ONE, ZOOM_RATE * delta)
+	set_physics_process(not is_equal_approx(zoom.x, _target_zoom))
+	
+	#var limit_area = CameraLimit.shape.size
+	#var viewport_size = get_viewport_rect().size
+	#var limit_min_x = CameraLimit.global_position.x-limit_area.x/2
+	#var limit_max_x = CameraLimit.global_position.x+limit_area.x/2
+	#var limit_min_y = CameraLimit.global_position.y-limit_area.y/2 
+	#var limit_max_y = CameraLimit.global_position.y+limit_area.y/2
+	#position.x = clamp(position.x, limit_min_x,limit_max_x)
+	#position.y = clamp(position.y, limit_min_y,limit_max_y)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				zoom_in()
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				zoom_out()
+		if event.button_index == MOUSE_BUTTON_MIDDLE:
+			if event.is_pressed():
+				is_dragging = true
+				last_mouse_position = event.position
+			else:
+				is_dragging = false
+	if event is InputEventMouseMotion:
+		if is_dragging:
+			# Déplacement de la caméra, ajusté au zoom
+			var new_pos = position - event.relative / zoom
+			position = get_limited_position(new_pos)
+
+
+func get_limited_position(new_pos: Vector2) -> Vector2:
+	var limit_area = CameraLimit.shape.size
+	var viewport_size = get_viewport_rect().size
+	var limit_min_x = CameraLimit.global_position.x-limit_area.x/2
+	var limit_max_x = CameraLimit.global_position.x+limit_area.x/2
+	var limit_min_y = CameraLimit.global_position.y-limit_area.y/2 
+	var limit_max_y = CameraLimit.global_position.y+limit_area.y/2
+	var x  = clamp(new_pos.x, limit_min_x,limit_max_x)
+	var y  = clamp(new_pos.y, limit_min_y,limit_max_y)
+	return Vector2(x, y)
+
+
+func zoom_in() -> void:
+	_target_zoom = max(_target_zoom - ZOOM_INCREMENT, MIN_ZOOM)
+	set_physics_process(true)
+
+
+func zoom_out() -> void:
+	_target_zoom = min(_target_zoom + ZOOM_INCREMENT, MAX_ZOOM)
+	set_physics_process(true)
+
+
+func focus_position(target_position: Vector2) -> void:
+	_tween.tween_property(self, "position", target_position, 0.2)

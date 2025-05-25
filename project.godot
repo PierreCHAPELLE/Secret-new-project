@@ -13,19 +13,21 @@ config_version=5
 config/name="Secret new project"
 run/main_scene="uid://ckxaf4t7cong3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-GlobalsVar="*res://SCENE/Autoload/GlobalsVar.gd"
+GlobalsVar="*res://SCRIPTS/Autoload/GlobalsVar.gd"
+Util="*res://SCRIPTS/Autoload/Util.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
-window/stretch/mode="viewport"
+window/size/initial_position_type=0
 
 [editor_plugins]
 
@@ -34,7 +36,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [gui]
 
 theme/custom="uid://bbykjejee7j2t"
-theme/custom_font="uid://dwr5hqtuw4yvb"
+theme/custom_font="uid://s35ob48pxbl5"
 
 [input]
 
@@ -51,9 +53,10 @@ Click={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://addons/dialogue.dialogue", "res://addons/Testing.dialogue")
+locale/translations_pot_files=PackedStringArray("res://addons/dialogue.dialogue", "res://addons/Testing.dialogue", "res://DATA/Dialog_Resource/ClosedTonneau.dialogue", "res://DATA/Dialog_Resource/Gnome\'s Barrel.dialogue", "res://DATA/Dialog_Resource/Armoire.dialogue")
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

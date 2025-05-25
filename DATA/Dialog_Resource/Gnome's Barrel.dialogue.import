@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://x0cfcm5a1qoe"
+path="res://.godot/imported/Gnome's Barrel.dialogue-1f3b1e12abb8009e57828cd2163b068c.tres"
+
+[deps]
+
+source_file="res://DATA/Dialog_Resource/Gnome's Barrel.dialogue"
+dest_files=["res://.godot/imported/Gnome's Barrel.dialogue-1f3b1e12abb8009e57828cd2163b068c.tres"]
+
+[params]
+
+defaults=true

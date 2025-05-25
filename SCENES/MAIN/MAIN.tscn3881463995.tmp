@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckxaf4t7cong3"]
+
+[ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://SCENES/MAIN/main.gd" id="1_rf5wo"]
+[ext_resource type="Script" uid="uid://bs8ek84fttlnv" path="res://SCENES/MAIN/1 - INNER/INNER_UI.gd" id="2_85okl"]
+[ext_resource type="PackedScene" uid="uid://7rynbk4bvg0j" path="res://SCENES/World/world.tscn" id="2_rf5wo"]
+[ext_resource type="PackedScene" uid="uid://dmypali52j1gn" path="res://addons/example_balloon.tscn" id="3_ao1bj"]
+[ext_resource type="Shader" uid="uid://cntg1188t2uco" path="res://ASSETS/RESOURCE/Shader/MAIN.gdshader" id="3_bhtte"]
+[ext_resource type="Script" uid="uid://n2dhucmbp40m" path="res://SCENES/MAIN/2 - CENTER/CENTER_UI.gd" id="3_fw155"]
+[ext_resource type="Script" uid="uid://y2g83e71txtg" path="res://SCENES/MAIN/2 - CENTER/ACTION_UI.gd" id="6_85okl"]
+[ext_resource type="Script" uid="uid://d4gyd1cosc7q4" path="res://SCENES/MAIN/2 - CENTER/Selected_tile.gd" id="7_fw155"]
+[ext_resource type="TileSet" uid="uid://dd601kvpw0t4s" path="res://ASSETS/RESOURCE/TileSet_Resource/BG_tileset.tres" id="8_lu2fn"]
+[ext_resource type="Script" uid="uid://bvv20sfbg2h2p" path="res://SCENES/MAIN/3 - OUTER/OUTER_UI.gd" id="9_gvjxi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bhtte"]
+load_path = "res://.godot/imported/creatures_transparent.png-4b424f5cbe09927112c8fe44dee05f58.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm5h3"]
+atlas = SubResource("CompressedTexture2D_bhtte")
+region = Rect2(64, 143, 17, 17)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g17dj"]
+shader = ExtResource("3_bhtte")
+shader_parameter/palette_array_size = 0
+shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eicf3"]
+
+[node name="Word" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rf5wo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="INNER_UI" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_85okl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/INNER_UI"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/INNER_UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_tm5h3")
+stretch_mode = 4
+
+[node name="CENTER_UI" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 0
+script = ExtResource("3_fw155")
+
+[node name="Fight_Zone" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="World_Zone" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer/CENTER_UI/World_Zone"]
+material = SubResource("ShaderMaterial_g17dj")
+layout_mode = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(568, 300)
+render_target_update_mode = 4
+
+[node name="World" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer/SubViewport" instance=ExtResource("2_rf5wo")]
+unique_name_in_owner = true
+
+[node name="Action_ZONE" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("6_85okl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/CENTER_UI/Action_ZONE"]
+layout_mode = 2
+
+[node name="Selected_Tile_ZONE" type="VBoxContainer" parent="HBoxContainer/CENTER_UI/Action_ZONE/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("7_fw155")
+tileset = ExtResource("8_lu2fn")
+
+[node name="Selected_tile_title" type="Label" parent="HBoxContainer/CENTER_UI/Action_ZONE/HBoxContainer/Selected_Tile_ZONE"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Selected_tile_display" type="TextureRect" parent="HBoxContainer/CENTER_UI/Action_ZONE/HBoxContainer/Selected_Tile_ZONE"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_eicf3")
+stretch_mode = 4
+
+[node name="Dialogue" parent="HBoxContainer/CENTER_UI/Action_ZONE/HBoxContainer" instance=ExtResource("3_ao1bj")]
+layout_mode = 2
+
+[node name="OUTER_UI" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9_gvjxi")
+
+[editable path="HBoxContainer/CENTER_UI/Action_ZONE/HBoxContainer/Dialogue"]

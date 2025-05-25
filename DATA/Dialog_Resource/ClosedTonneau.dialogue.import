@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dxk24m8ee12sp"
+path="res://.godot/imported/ClosedTonneau.dialogue-7a7fadf49acc84f411c7a3a93e4d2094.tres"
+
+[deps]
+
+source_file="res://DATA/Dialog_Resource/ClosedTonneau.dialogue"
+dest_files=["res://.godot/imported/ClosedTonneau.dialogue-7a7fadf49acc84f411c7a3a93e4d2094.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://hfk5reuk847a"
+path="res://.godot/imported/Armoire.dialogue-9cb076737564990d596336c499637566.tres"
+
+[deps]
+
+source_file="res://DATA/Dialog_Resource/Armoire.dialogue"
+dest_files=["res://.godot/imported/Armoire.dialogue-9cb076737564990d596336c499637566.tres"]
+
+[params]
+
+defaults=true

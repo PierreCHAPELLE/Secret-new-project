@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CustomTile" load_steps=2 format=3 uid="uid://c50yd6nsi51rc"]
+
+[ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="1_2job5"]
+
+[resource]
+script = ExtResource("1_2job5")
+Title = "Test 1"
+SimpleLine = Array[String]([""])
+metadata/_custom_type_script = "uid://didhnqpcbw0vx"
