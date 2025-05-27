@@ -1,0 +1,8 @@
+~ start
+NARRATOR: voici votre chat. C'est un petit con principallement
+- Super! il peut venir avec moi?
+	NARRATOR: Bien sur. C'est ton aventure!
+	- ba  let's go qu'il vienne daheck avec moi
+	- non il est bien à la maison ce con
+	
+=> END

@@ -6,8 +6,8 @@ class_name PanningCamera2D
 
 @export var MIN_ZOOM: float = 1
 @export var MAX_ZOOM: float = 3
-@export var ZOOM_RATE: float = 8.0
-@export var ZOOM_INCREMENT: float = 0.1
+@export var ZOOM_RATE: float = 4.0
+@export var ZOOM_INCREMENT: float = 0.5
 
 @export var _target_zoom: float = 2
 

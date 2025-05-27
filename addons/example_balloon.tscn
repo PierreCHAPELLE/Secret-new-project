@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="1_y661x"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_yq83w"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_cyl72"]
-[ext_resource type="Script" uid="uid://d3bfrs345gidx" path="res://SCENES/MAIN/balloon.gd" id="3_nb1ap"]
+[ext_resource type="Script" uid="uid://d3bfrs345gidx" path="res://SCENES/MAIN/2 - CENTER/3 -Action_ZONE/balloon.gd" id="3_nb1ap"]
 [ext_resource type="Theme" uid="uid://bbykjejee7j2t" path="res://ASSETS/RESOURCE/MAIN_THEME.tres" id="6_jdj66"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2mvuv"]

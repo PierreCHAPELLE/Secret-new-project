@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dsxrak077ungi"
+path="res://.godot/imported/Hero_Cat.dialogue-6547098be47102a62199b4fbff70a596.tres"
+
+[deps]
+
+source_file="res://DATA/Dialog_Resource/Hero_Cat.dialogue"
+dest_files=["res://.godot/imported/Hero_Cat.dialogue-6547098be47102a62199b4fbff70a596.tres"]
+
+[params]
+
+defaults=true

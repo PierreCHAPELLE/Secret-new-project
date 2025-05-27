@@ -33,10 +33,6 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aaox"]
 bg_color = Color(0.898039, 0.898039, 0.898039, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxxxf"]
 texture = ExtResource("4_dveii")
@@ -109,35 +105,21 @@ size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 0
 script = ExtResource("3_fw155")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CENTER_UI"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.06
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_right = 3
-
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/CENTER_UI/MarginContainer"]
-unique_name_in_owner = true
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/CENTER_UI"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_vhmgw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3aaox")
 show_percentage = false
 
-[node name="Fight_Zone" type="HBoxContainer" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("Turn_Timer", "allies_pool", "enemies_pool")]
+[node name="Fight_Zone" type="HBoxContainer" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("Turn_Timer")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 script = ExtResource("5_s6idh")
-Turn_Timer = NodePath("Turn_Timer")
-allies_pool = NodePath("Allies/MarginContainer/Allies_row_y/Allies_Pool")
-enemies_pool = NodePath("Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
-
-[node name="Turn_Timer" type="Timer" parent="HBoxContainer/CENTER_UI/Fight_Zone"]
-one_shot = true
+Turn_Timer = NodePath("Timer")
 
 [node name="Placement Manager" type="Node" parent="HBoxContainer/CENTER_UI/Fight_Zone"]
 script = ExtResource("6_cjseh")
@@ -203,24 +185,26 @@ theme_override_constants/margin_bottom = 35
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Enemies_Pool" type="Node2D" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y" node_paths=PackedStringArray("Row", "Fight_Zone")]
+[node name="Enemy_Pool" type="Node2D" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y" node_paths=PackedStringArray("Row", "Fight_Zone")]
 unique_name_in_owner = true
 script = ExtResource("7_id6yc")
 Row = NodePath("..")
 Alignement = 1
 Fight_Zone = NodePath("../../../..")
 
-[node name="Fighter" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y/Enemies_Pool" instance=ExtResource("7_p2nk2")]
+[node name="Fighter" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y/Enemy_Pool" instance=ExtResource("7_p2nk2")]
 
-[node name="Fighter2" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y/Enemies_Pool" instance=ExtResource("7_p2nk2")]
+[node name="Fighter2" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y/Enemy_Pool" instance=ExtResource("7_p2nk2")]
 
-[node name="Fighter3" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y/Enemies_Pool" instance=ExtResource("7_p2nk2")]
+[node name="Fighter3" parent="HBoxContainer/CENTER_UI/Fight_Zone/Enemies/MarginContainer/Enemies_row_y/Enemy_Pool" instance=ExtResource("7_p2nk2")]
+
+[node name="Timer" type="Timer" parent="HBoxContainer/CENTER_UI/Fight_Zone"]
 
 [node name="World_Zone" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.8
+size_flags_stretch_ratio = 2.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_xxxxf")
 script = ExtResource("8_cjseh")
 
@@ -233,7 +217,7 @@ mouse_target = true
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(537, 251)
+size = Vector2i(537, 268)
 render_target_update_mode = 4
 
 [node name="World" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer/SubViewport" instance=ExtResource("2_rf5wo")]
@@ -295,6 +279,6 @@ text = "place"
 layout_mode = 2
 text = "Fight"
 
-[connection signal="timeout" from="HBoxContainer/CENTER_UI/Fight_Zone/Turn_Timer" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_timer_timeout"]
+[connection signal="timeout" from="HBoxContainer/CENTER_UI/Fight_Zone/Timer" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_timer_timeout"]
 [connection signal="pressed" from="HBoxContainer/OUTER_UI/VBoxContainer/Place" to="HBoxContainer/CENTER_UI/Fight_Zone/Placement Manager" method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/OUTER_UI/VBoxContainer/Fight" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_fight_pressed"]

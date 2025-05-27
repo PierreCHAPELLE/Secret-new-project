@@ -48,8 +48,15 @@ func Update_visual(selected_coor :Vector2i, selected_ALT_ID:int,tile_data:TileDa
 		return
 	if tile_custom_ressource.Dialog:
 		print(tile_custom_ressource.Dialog)
-		_on_dialog_called(%Dialogue,tile_custom_ressource.Dialog,"start")
+		_on_dialog_called(tile_custom_ressource.Dialog,"start")
 	return
-func _on_dialog_called(DialogManager, DialogRes : DialogueResource, DialogStart : String):
-	%MarginContainer.add_child(DialogManager)
-	DialogManager.start(DialogRes, DialogStart)
+func _on_dialog_called(DialogRes : DialogueResource, DialogStart : String):
+	var Ballon = BALLON.instantiate()
+	%MarginContainer.add_child(Ballon)
+	Ballon.start(DialogRes, DialogStart)
+	return
+
+
+
+
+var BALLON = preload("res://addons/example_balloon.tscn")

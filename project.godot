@@ -53,7 +53,7 @@ Click={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://addons/dialogue.dialogue", "res://addons/Testing.dialogue", "res://DATA/Dialog_Resource/ClosedTonneau.dialogue", "res://DATA/Dialog_Resource/Gnome\'s Barrel.dialogue", "res://DATA/Dialog_Resource/Armoire.dialogue")
+locale/translations_pot_files=PackedStringArray("res://addons/dialogue.dialogue", "res://addons/Testing.dialogue", "res://DATA/Dialog_Resource/ClosedTonneau.dialogue", "res://DATA/Dialog_Resource/Gnome\'s Barrel.dialogue", "res://DATA/Dialog_Resource/Armoire.dialogue", "res://DATA/Dialog_Resource/Hero_Cat.dialogue")
 
 [rendering]
 

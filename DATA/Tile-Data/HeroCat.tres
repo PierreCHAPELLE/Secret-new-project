@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CustomTile" load_steps=3 format=3 uid="uid://bimoiqi7kicx8"]
+
+[ext_resource type="Resource" uid="uid://dsxrak077ungi" path="res://DATA/Dialog_Resource/Hero_Cat.dialogue" id="1_q5vr2"]
+[ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="1_t5pkv"]
+
+[resource]
+script = ExtResource("1_t5pkv")
+Title = "le chat maliceux"
+Dialog = ExtResource("1_q5vr2")
+SimpleLine = Array[String]([])
+metadata/_custom_type_script = "uid://didhnqpcbw0vx"
