@@ -1,0 +1,19 @@
+~ start
+NARRATOR: OH!
+NARRATOR: C'est une souris, ça doit être ta bouffe qui l'as attiré
+- qu'est-ce que je dois faire? je peux la virer?
+NARRATOR: Tu sais ce que tu dois faire...
+- D'accord! ça doit être le tuto! 
+	=> mousefight
+- T'es insane jamais je pourrais faire ça 
+	=> mouseflee
+
+
+~ mousefight
+NARRATOR: let's go[do GlobalsVar.Fight_Zone._init_fight()]
+
+=> END
+~ mouseflee
+NARRATOR: hum... pas fun
+=> END
+=> END!

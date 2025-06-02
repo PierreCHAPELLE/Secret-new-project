@@ -33,6 +33,7 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			# The dialogue has finished so close the balloon
+			finished_dialogue()#Modif Pierre
 			queue_free()
 	get:
 		return dialogue_line
@@ -56,7 +57,7 @@ var mutation_cooldown: Timer = Timer.new()
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
-
+	GlobalsVar.dialog_is_running = true
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
@@ -131,6 +132,12 @@ func apply_dialogue_line() -> void:
 ## Go to the next line
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+
+
+func finished_dialogue()->void:
+	GlobalsVar.dialog_is_running = false
+	SignalBus.Dialogue_ended.emit()
+	return
 
 
 #region Signals

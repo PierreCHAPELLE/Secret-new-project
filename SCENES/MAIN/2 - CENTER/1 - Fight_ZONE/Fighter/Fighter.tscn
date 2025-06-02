@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvfvfuyp0w2mo"]
 
 [ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="1_3u4w6"]
-[ext_resource type="Script" uid="uid://b6d3omebgq8vh" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fighter.gd" id="1_72ot8"]
+[ext_resource type="Script" uid="uid://b6d3omebgq8vh" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fighter/Fighter.gd" id="1_72ot8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72ot8"]
 atlas = ExtResource("1_3u4w6")

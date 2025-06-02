@@ -1,34 +1,52 @@
 @icon("uid://c0xwxl1rdf41b")
 extends VBoxContainer
-class_name Selected_Tile_UI
+class_name Selected_Tile_ZONE
 
 
+var BALLON = preload("res://addons/example_balloon.tscn")
 
 @onready var selected_tile_display: TextureRect = %Selected_tile_display
 @onready var selected_tile_title: Label = %Selected_tile_title
+@onready var enemy_squad_zone: Enemy_Squad_ZONE = %EnemySquad_ZONE
+
+func _ready() -> void:
+	SignalBus.Tile_has_been_updated.connect(_tile_has_been_updated)
+	return
+
+func _tile_has_been_updated():
+	var data_selected_tile = GlobalsVar.current_selected_tile
+	#if data_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA] == null:
+	if data_selected_tile == []:
+		unselect_tile()
+		return
+	else:
+		select_tile(data_selected_tile)
+		pass
+	var tile_data : TileData = data_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA]
+	enemy_squad_zone.Generated_EnemySquad_Display(Util.data_to_resource(tile_data))
 
 
 func unselect_tile() -> void:
 	selected_tile_display.hide()
 	selected_tile_title.hide()
-	
+	enemy_squad_zone.cleanse()
 	return
 
 func select_tile(array_selected_tile : Array) -> void:
 	var selected_coor : Vector2i= array_selected_tile[Maps.ENUM_SELECTED_TILE.ATLAS_COOR]
 	var selected_ALT_ID : int = array_selected_tile[Maps.ENUM_SELECTED_TILE.ALT_TILE_ID]
 	var tile_data : TileData = array_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA]
-	Update_visual(selected_coor, selected_ALT_ID,tile_data)
-	
+	var tileset_source_id : int = array_selected_tile[Maps.ENUM_SELECTED_TILE.SOURCE_ID]
+	Update_visual(selected_coor, selected_ALT_ID,tile_data, tileset_source_id)
 	return
 
 
 
 
 
-func Update_visual(selected_coor :Vector2i, selected_ALT_ID:int,tile_data:TileData)->void:
+func Update_visual(selected_coor :Vector2i, _selected_ALT_ID:int,tile_data:TileData,tileset_source_id : int )->void:
 #	mise à jour du texture rect
-	var atlas_source : TileSetAtlasSource = GlobalsVar.MAIN_Tileset.get_source(1)
+	var atlas_source : TileSetAtlasSource = GlobalsVar.MAIN_Tileset.get_source(tileset_source_id)
 	var texture_to_display := AtlasTexture.new()
 	texture_to_display.atlas = atlas_source.texture
 	texture_to_display.region = atlas_source.get_tile_texture_region(selected_coor)
@@ -49,14 +67,20 @@ func Update_visual(selected_coor :Vector2i, selected_ALT_ID:int,tile_data:TileDa
 	if tile_custom_ressource.Dialog:
 		print(tile_custom_ressource.Dialog)
 		_on_dialog_called(tile_custom_ressource.Dialog,"start")
+		pass
+	
 	return
+
+
+var test = "le gros paf de ganon"
+
 func _on_dialog_called(DialogRes : DialogueResource, DialogStart : String):
-	var Ballon = BALLON.instantiate()
-	%MarginContainer.add_child(Ballon)
+	var Ballon = BALLON.instantiate() as DialogueManagerExampleBalloon
+	%Ballon_Holder.add_child(Ballon)
+	Ballon
 	Ballon.start(DialogRes, DialogStart)
 	return
 
 
-
-
-var BALLON = preload("res://addons/example_balloon.tscn")
+func Test():
+	print("le gros paf de ganon")

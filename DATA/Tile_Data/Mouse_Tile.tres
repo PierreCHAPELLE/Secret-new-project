@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CustomTile" load_steps=5 format=3 uid="uid://bdud4iqwidbeb"]
+
+[ext_resource type="Resource" uid="uid://c08rjlcvax0p6" path="res://DATA/Dialog_Resource/Mouse.dialogue" id="1_w3sl5"]
+[ext_resource type="Script" uid="uid://b4ejvb3mjkvis" path="res://SCRIPTS/Custom_Resource/FighterResource.gd" id="2_rckfi"]
+[ext_resource type="Resource" uid="uid://b0yyn2xqkccv5" path="res://DATA/Fighter_Resource/Mouse_FighterResource.tres" id="3_rckfi"]
+[ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="4_rjfrb"]
+
+[resource]
+script = ExtResource("4_rjfrb")
+Title = "souris souriante"
+Dialog = ExtResource("1_w3sl5")
+Fighter_Resource = Array[ExtResource("2_rckfi")]([ExtResource("3_rckfi")])
+SimpleLine = Array[String]([])
+metadata/_custom_type_script = "uid://didhnqpcbw0vx"

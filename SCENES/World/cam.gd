@@ -1,6 +1,6 @@
 extends Camera2D
 class_name PanningCamera2D
-@onready var map: TileMapLayer = %Map
+@onready var map: TileMapLayer = %Maps
 
 @export var CameraLimit : CollisionShape2D
 
@@ -50,7 +50,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func get_limited_position(new_pos: Vector2) -> Vector2:
 	var limit_area = CameraLimit.shape.size
-	var viewport_size = get_viewport_rect().size
 	var limit_min_x = CameraLimit.global_position.x-limit_area.x/2
 	var limit_max_x = CameraLimit.global_position.x+limit_area.x/2
 	var limit_min_y = CameraLimit.global_position.y-limit_area.y/2 

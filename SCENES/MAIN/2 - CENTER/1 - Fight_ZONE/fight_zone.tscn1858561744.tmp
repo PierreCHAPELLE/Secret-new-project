@@ -1,0 +1,176 @@
+[gd_scene load_steps=14 format=3 uid="uid://cbiq60fq5wx"]
+
+[ext_resource type="Script" uid="uid://dl3genud7au2d" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fight_ZONE.gd" id="1_mxm40"]
+[ext_resource type="Script" uid="uid://cfxa54w24myu0" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/states_machineFight.gd" id="2_n8o8w"]
+[ext_resource type="Script" uid="uid://cohg8lroncyxq" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/init_fight.gd" id="3_t0g6e"]
+[ext_resource type="Script" uid="uid://dsywa3l24llhn" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/round_manager.gd" id="4_6k6hr"]
+[ext_resource type="Script" uid="uid://c7nm1cvj6lubs" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/start_round.gd" id="4_6qr6t"]
+[ext_resource type="Script" uid="uid://bwcpjjwgjqj5i" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/start_turn.gd" id="5_jjf73"]
+[ext_resource type="Script" uid="uid://dvxcmjjcpflu5" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/turn_manager.gd" id="5_jsxww"]
+[ext_resource type="Script" uid="uid://bqnirc82q4kxl" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/placement_manager.gd" id="6_t0g6e"]
+[ext_resource type="Script" uid="uid://c72w7lqe6h5a3" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_turn.gd" id="6_ya80m"]
+[ext_resource type="Script" uid="uid://bb5ex16f1dnnv" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Pool.gd" id="7_6qr6t"]
+[ext_resource type="Script" uid="uid://cf2230hqk3kqc" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_round.gd" id="7_tx0i4"]
+[ext_resource type="PackedScene" uid="uid://bvfvfuyp0w2mo" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fighter/ally.tscn" id="8_jjf73"]
+[ext_resource type="Script" uid="uid://cihlldlruqiex" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_fight.gd" id="8_ufjjl"]
+
+[node name="Fight_Zone" type="HBoxContainer" node_paths=PackedStringArray("Turn_Timer", "allies_pool", "enemies_pool")]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+script = ExtResource("1_mxm40")
+Turn_Timer = NodePath("Turn_Timer")
+allies_pool = NodePath("Allies/MarginContainer/Allies_row_y/Allies_Pool")
+enemies_pool = NodePath("Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+
+[node name="StatesMachineFIGHT" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_n8o8w")
+initial_state = NodePath("Init_FIGHT")
+metadata/_custom_type_script = "uid://cfxa54w24myu0"
+
+[node name="Init_FIGHT" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Round_manager", "Turn_manager", "Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+script = ExtResource("3_t0g6e")
+Round_manager = NodePath("../../Round_Manager")
+Turn_manager = NodePath("../../Turn_Manager")
+Turn_timer = NodePath("../../Turn_Timer")
+Allies_pool = NodePath("../../Allies/MarginContainer/Allies_row_y/Allies_Pool")
+Enemies_pool = NodePath("../../Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="Start_ROUND" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Round_manager", "Turn_manager", "Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+script = ExtResource("4_6qr6t")
+Round_manager = NodePath("../../Round_Manager")
+Turn_manager = NodePath("../../Turn_Manager")
+Turn_timer = NodePath("../../Turn_Timer")
+Allies_pool = NodePath("../../Allies/MarginContainer/Allies_row_y/Allies_Pool")
+Enemies_pool = NodePath("../../Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="Start_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Round_manager", "Turn_manager", "Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+script = ExtResource("5_jjf73")
+Round_manager = NodePath("../../Round_Manager")
+Turn_manager = NodePath("../../Turn_Manager")
+Turn_timer = NodePath("../../Turn_Timer")
+Allies_pool = NodePath("../../Allies/MarginContainer/Allies_row_y/Allies_Pool")
+Enemies_pool = NodePath("../../Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="End_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Round_manager", "Turn_manager", "Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+script = ExtResource("6_ya80m")
+Round_manager = NodePath("../../Round_Manager")
+Turn_manager = NodePath("../../Turn_Manager")
+Turn_timer = NodePath("../../Turn_Timer")
+Allies_pool = NodePath("../../Allies/MarginContainer/Allies_row_y/Allies_Pool")
+Enemies_pool = NodePath("../../Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="End_ROUND" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Round_manager", "Turn_manager", "Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+script = ExtResource("7_tx0i4")
+Round_manager = NodePath("../../Round_Manager")
+Turn_manager = NodePath("../../Turn_Manager")
+Turn_timer = NodePath("../../Turn_Timer")
+Allies_pool = NodePath("../../Allies/MarginContainer/Allies_row_y/Allies_Pool")
+Enemies_pool = NodePath("../../Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="End_FIGHT" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Round_manager", "Turn_manager", "Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+script = ExtResource("8_ufjjl")
+Round_manager = NodePath("../../Round_Manager")
+Turn_manager = NodePath("../../Turn_Manager")
+Turn_timer = NodePath("../../Turn_Timer")
+Allies_pool = NodePath("../../Allies/MarginContainer/Allies_row_y/Allies_Pool")
+Enemies_pool = NodePath("../../Enemies/MarginContainer/Enemies_row_y/Enemies_Pool")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="Round_Manager" type="Node" parent="."]
+script = ExtResource("4_6k6hr")
+
+[node name="Turn_Manager" type="Node" parent="."]
+script = ExtResource("5_jsxww")
+
+[node name="Placement Manager" type="Node" parent="."]
+script = ExtResource("6_t0g6e")
+
+[node name="Allies" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Allies"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 35
+
+[node name="Allies_row_y" type="Control" parent="Allies/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Allies_Pool" type="Node2D" parent="Allies/MarginContainer/Allies_row_y" node_paths=PackedStringArray("Row")]
+unique_name_in_owner = true
+script = ExtResource("7_6qr6t")
+Row = NodePath("..")
+
+[node name="Fighter" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter2" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter3" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter4" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter5" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter6" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter7" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter8" parent="Allies/MarginContainer/Allies_row_y/Allies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Enemies" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Enemies"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 35
+
+[node name="Enemies_row_y" type="Control" parent="Enemies/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Enemies_Pool" type="Node2D" parent="Enemies/MarginContainer/Enemies_row_y" node_paths=PackedStringArray("Row", "Fight_Zone")]
+unique_name_in_owner = true
+script = ExtResource("7_6qr6t")
+Row = NodePath("..")
+Alignement = 1
+Fight_Zone = NodePath("../../../..")
+
+[node name="Fighter" parent="Enemies/MarginContainer/Enemies_row_y/Enemies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter2" parent="Enemies/MarginContainer/Enemies_row_y/Enemies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Fighter3" parent="Enemies/MarginContainer/Enemies_row_y/Enemies_Pool" instance=ExtResource("8_jjf73")]
+
+[node name="Turn_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

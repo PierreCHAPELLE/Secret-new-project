@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FighterResource" load_steps=4 format=3 uid="uid://chpp6xrw2j3gj"]
+
+[ext_resource type="Script" uid="uid://b4ejvb3mjkvis" path="res://SCRIPTS/Custom_Resource/FighterResource.gd" id="1_pvpda"]
+[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="2_yffpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rhjk"]
+atlas = ExtResource("2_yffpj")
+region = Rect2(252, 126, 18, 18)
+
+[resource]
+script = ExtResource("1_pvpda")
+visual = SubResource("AtlasTexture_3rhjk")
+name = "Petit Con"
+HP = 5
+ATK = 2
+attack_type = 0
+bonus_type = Array[int]([])
+metadata/_custom_type_script = "uid://b4ejvb3mjkvis"

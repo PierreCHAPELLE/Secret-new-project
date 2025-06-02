@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FighterResource" load_steps=4 format=3 uid="uid://b0yyn2xqkccv5"]
+
+[ext_resource type="Script" uid="uid://b4ejvb3mjkvis" path="res://SCRIPTS/Custom_Resource/FighterResource.gd" id="1_bi24b"]
+[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="2_7jcpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi24b"]
+atlas = ExtResource("2_7jcpq")
+region = Rect2(288, 126, 18, 18)
+
+[resource]
+script = ExtResource("1_bi24b")
+visual = SubResource("AtlasTexture_bi24b")
+name = "Souris souriante"
+HP = 1
+ATK = 1
+attack_type = 0
+bonus_type = Array[int]([])
+metadata/_custom_type_script = "uid://b4ejvb3mjkvis"

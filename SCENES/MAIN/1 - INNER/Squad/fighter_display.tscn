@@ -1,0 +1,330 @@
+[gd_scene load_steps=43 format=3 uid="uid://ddgm8cwaxuv0d"]
+
+[ext_resource type="Texture2D" uid="uid://lg22ycu1wujk" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/item.png" id="1_5hs8a"]
+[ext_resource type="Script" uid="uid://b61lx5qk1g7ii" path="res://SCENES/MAIN/1 - INNER/Squad/fighter_container.gd" id="2_q6jwj"]
+[ext_resource type="Resource" uid="uid://b4ocixdiev1r5" path="res://DATA/Fighter_Resource/Player.tres" id="3_bcn6b"]
+[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="4_4twxn"]
+[ext_resource type="Texture2D" uid="uid://knxnqtxbnkmw" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Item_Outline.png" id="5_rjw2t"]
+[ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="6_q6jwj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvoqb"]
+texture = ExtResource("1_5hs8a")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(144, 198, 18, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_myba5"]
+load_path = "res://.godot/imported/Item_Outline.png-f6a591397a6fb43e8c734711c39843db.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm674"]
+atlas = SubResource("CompressedTexture2D_myba5")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6vf2"]
+load_path = "res://.godot/imported/item.png-aea5a179cbc0709f676cd1f6187f3d09.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lakv"]
+atlas = SubResource("CompressedTexture2D_m6vf2")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doss2"]
+atlas = SubResource("CompressedTexture2D_myba5")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcuva"]
+atlas = ExtResource("1_5hs8a")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6vf2"]
+atlas = SubResource("CompressedTexture2D_myba5")
+region = Rect2(144, 72, 18, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_negcx"]
+load_path = "res://.godot/imported/item.png-aea5a179cbc0709f676cd1f6187f3d09.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xipv1"]
+atlas = SubResource("CompressedTexture2D_negcx")
+region = Rect2(144, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u513b"]
+atlas = SubResource("CompressedTexture2D_myba5")
+region = Rect2(180, 54, 18, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_to5pt"]
+load_path = "res://.godot/imported/item.png-aea5a179cbc0709f676cd1f6187f3d09.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4o2d"]
+atlas = SubResource("CompressedTexture2D_to5pt")
+region = Rect2(180, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iytau"]
+atlas = ExtResource("4_4twxn")
+region = Rect2(126, 126, 18, 18)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvoqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7humf"]
+atlas = ExtResource("5_rjw2t")
+region = Rect2(108, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ptf"]
+atlas = ExtResource("1_5hs8a")
+region = Rect2(108, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8iry"]
+atlas = SubResource("CompressedTexture2D_myba5")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3mtp"]
+atlas = ExtResource("1_5hs8a")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mtbs"]
+atlas = ExtResource("1_5hs8a")
+region = Rect2(93, 129, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xipv1"]
+texture = SubResource("AtlasTexture_6mtbs")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcn6b"]
+atlas = ExtResource("6_q6jwj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4twxn"]
+texture = SubResource("AtlasTexture_bcn6b")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(144, 720, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rjw2t"]
+texture = SubResource("AtlasTexture_bcn6b")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(128, 720, 17, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ajbs"]
+texture = SubResource("AtlasTexture_bcn6b")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(112, 720, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q6jwj"]
+load_path = "res://.godot/imported/panels-export.png-1df10206ed13b8a492588580f552be8f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4twxn"]
+atlas = SubResource("CompressedTexture2D_q6jwj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_degwb"]
+texture = SubResource("AtlasTexture_4twxn")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(160, 720, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fd0m4"]
+load_path = "res://.godot/imported/panels-export.png-1df10206ed13b8a492588580f552be8f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3wam"]
+atlas = SubResource("CompressedTexture2D_fd0m4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5i02s"]
+texture = SubResource("AtlasTexture_o3wam")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(176, 720, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dfx6n"]
+load_path = "res://.godot/imported/panels-export.png-1df10206ed13b8a492588580f552be8f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n4d8"]
+atlas = SubResource("CompressedTexture2D_dfx6n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7mjwy"]
+texture = SubResource("AtlasTexture_0n4d8")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(192, 720, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to5pt"]
+atlas = ExtResource("1_5hs8a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4o2d"]
+texture = SubResource("AtlasTexture_to5pt")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(183, 129, 14, 14)
+
+[node name="Fighter_Container" type="PanelContainer"]
+texture_filter = 1
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_yvoqb")
+script = ExtResource("2_q6jwj")
+Fighter_Resource = ExtResource("3_bcn6b")
+close_icon1 = SubResource("AtlasTexture_rm674")
+close_icon2 = SubResource("AtlasTexture_5lakv")
+range_icon1 = SubResource("AtlasTexture_doss2")
+range_icon2 = SubResource("AtlasTexture_wcuva")
+heal_icon1 = SubResource("AtlasTexture_m6vf2")
+heal_icon2 = SubResource("AtlasTexture_xipv1")
+magic_icon1 = SubResource("AtlasTexture_u513b")
+magic_icon2 = SubResource("AtlasTexture_v4o2d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = " Name:"
+
+[node name="Name_Data" type="Label" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " Name:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Skin" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = SubResource("AtlasTexture_iytau")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yvoqb")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_7humf")
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+modulate = Color(1, 0.599933, 0.540393, 1)
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_b4ptf")
+stretch_mode = 4
+
+[node name="HP_data" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "3"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yvoqb")
+
+[node name="ATK1" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_j8iry")
+stretch_mode = 4
+
+[node name="ATK2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.270222, 0.270222, 0.270222, 1)
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_s3mtp")
+stretch_mode = 4
+
+[node name="ATK_data" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "3"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Items:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xipv1")
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xipv1")
+
+[node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer3"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xipv1")
+
+[node name="ScrollContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Boutton" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UP" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/Boutton"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_4twxn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rjw2t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2ajbs")
+
+[node name="Down" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/Boutton"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_degwb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5i02s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7mjwy")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v4o2d")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ScrollContainer/Boutton/UP" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ScrollContainer/Boutton/Down" to="." method="_on_down_pressed"]

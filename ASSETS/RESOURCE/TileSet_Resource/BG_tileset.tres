@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dd601kvpw0t4s"]
 
 [ext_resource type="Texture2D" uid="uid://c8x2sxwqf6dp1" path="res://ASSETS/VISUAL/TileSet-visual/El_TILESET_transparent.png" id="1_cfqub"]
-[ext_resource type="Resource" uid="uid://jrthvkbn2itx" path="res://DATA/Tile-Data/Gnome's Barrel.tres" id="2_8sc8p"]
-[ext_resource type="Resource" uid="uid://c50yd6nsi51rc" path="res://DATA/Tile-Data/test.tres" id="2_b1qyu"]
+[ext_resource type="Resource" path="res://DATA/Tile_Data/Gnome's Barrel.tres" id="2_8sc8p"]
+[ext_resource type="Resource" path="res://DATA/Tile_Data/test.tres" id="2_b1qyu"]
 [ext_resource type="Texture2D" uid="uid://du2vebe5os311" path="res://ASSETS/VISUAL/TileSet-visual/El_TILESET_transparent+outline-export.png" id="2_b7p1x"]
-[ext_resource type="Resource" uid="uid://c34julhln1u7k" path="res://DATA/Tile-Data/testbis.tres" id="3_8sc8p"]
-[ext_resource type="Resource" uid="uid://bimoiqi7kicx8" path="res://DATA/Tile-Data/HeroCat.tres" id="5_h6jed"]
+[ext_resource type="Resource" path="res://DATA/Tile_Data/testbis.tres" id="3_8sc8p"]
+[ext_resource type="Resource" uid="uid://bimoiqi7kicx8" path="res://DATA/Tile_Data/HeroCat_Tile.tres" id="5_h6jed"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aabw8"]
 texture = ExtResource("1_cfqub")
@@ -1843,5 +1843,5 @@ terrain_set_0/terrain_3/name = "vide"
 terrain_set_0/terrain_3/color = Color(0, 0, 0, 1)
 custom_data_layer_0/name = "RESOURCE"
 custom_data_layer_0/type = 24
-sources/0 = SubResource("TileSetAtlasSource_aabw8")
 sources/1 = SubResource("TileSetAtlasSource_prb7f")
+sources/0 = SubResource("TileSetAtlasSource_aabw8")

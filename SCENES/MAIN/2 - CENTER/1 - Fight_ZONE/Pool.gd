@@ -1,5 +1,6 @@
-extends Node
+extends Node2D
 class_name Pool
+
 enum ALIGNEMENT {ALLY,ENEMY}
 @export var Row : Control
 
@@ -14,6 +15,7 @@ func Excute_Round():
 	pass 
 
 func Excute_Turn(current_turn:int):
+	verif_available_fighter(current_turn) 
 	if All_Fighter_Attacked == true:
 		return
 	else:
