@@ -75,8 +75,10 @@ size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 0
 script = ExtResource("3_fw155")
 
-[node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" instance=ExtResource("6_cjseh")]
+[node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("allies_Squad", "enemies_Squad") instance=ExtResource("6_cjseh")]
 layout_mode = 2
+allies_Squad = NodePath("../../INNER_UI/ScrollContainer/AllySquad_ZONE")
+enemies_Squad = NodePath("../../OUTER_UI/VBoxContainer/ScrollContainer/EnemySquad_ZONE")
 
 [node name="World_Zone" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
 layout_mode = 2

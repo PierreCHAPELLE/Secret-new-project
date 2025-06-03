@@ -36,4 +36,4 @@ func Get_Fighter_from_Dialog():
 	pass
 
 func init_fight():
-	GlobalsVar.Fight_begun = true
+	pass

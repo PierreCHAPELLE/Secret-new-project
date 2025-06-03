@@ -1,5 +1,5 @@
 @icon("uid://docaxsarho4b")
-extends VBoxContainer
+extends PanelContainer
 class_name Fight_ZONE
 
 signal start_fight()
@@ -9,6 +9,9 @@ signal start_fight()
 
 @export var allies_pool: Pool
 @export var enemies_pool : Pool
+
+@export var allies_Squad: Squad_ZONE
+@export var enemies_Squad : Squad_ZONE
 
 @onready var states_machine_fight: StatesMachineFight = $StatesMachineFIGHT
 
@@ -27,19 +30,19 @@ func _process(delta: float) -> void:
 
 
 func _init_fight() -> void:
-	for fighter : Fighter_Container in allies_pool.get_children():
+	for fighter : Fighter_Container in allies_Squad.get_children():
 		generate_fighter(fighter,allies_pool)
-	for fighter : Fighter_Container in enemies_pool.get_children():
+	for fighter : Fighter_Container in enemies_Squad.get_children():
 		generate_fighter(fighter,enemies_pool)
 	
 	$"Placement Manager".Init_placement(allies_pool)
 	$"Placement Manager".Init_placement(enemies_pool)
 	start_fight.emit()
 
-
+var FIGHTER = preload("uid://bvfvfuyp0w2mo")
 
 func generate_fighter(fighter_container:Fighter_Container,pool : Pool):
-	var fighter = GlobalsVar.FIGHTER.instanciate() as Fighter
+	var fighter:Fighter = FIGHTER.instantiate()
 	pool.add_child(fighter)
 	fighter.init(fighter_container.Fighter_Current_Stat)
 	pass

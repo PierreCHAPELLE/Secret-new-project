@@ -13,9 +13,9 @@ class_name Fighter
 
 @onready var atk_label: Label = %"ATK Value"
 @onready var hp_label: Label = %"HP Value"
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: TextureRect =%Sprite2D
 
-var Field_Index
+var Field_Index : float
 
 var alive : bool = true
 
