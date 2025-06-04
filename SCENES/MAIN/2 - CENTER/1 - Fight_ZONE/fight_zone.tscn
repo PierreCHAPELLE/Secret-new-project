@@ -164,11 +164,10 @@ theme_override_constants/margin_bottom = 35
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Allies_Pool" type="Node2D" parent="VBoxContainer/HBoxContainer/Allies/MarginContainer/Allies_row_y" node_paths=PackedStringArray("Row", "Fight_Zone")]
+[node name="Allies_Pool" type="Node2D" parent="VBoxContainer/HBoxContainer/Allies/MarginContainer/Allies_row_y" node_paths=PackedStringArray("Row")]
 unique_name_in_owner = true
 script = ExtResource("7_6qr6t")
 Row = NodePath("..")
-Fight_Zone = NodePath("")
 
 [node name="Selected_A" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Allies"]
 unique_name_in_owner = true
@@ -197,12 +196,11 @@ theme_override_constants/margin_bottom = 35
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Enemies_Pool" type="Node2D" parent="VBoxContainer/HBoxContainer/Enemies/MarginContainer/Enemies_row_y" node_paths=PackedStringArray("Row", "Fight_Zone")]
+[node name="Enemies_Pool" type="Node2D" parent="VBoxContainer/HBoxContainer/Enemies/MarginContainer/Enemies_row_y" node_paths=PackedStringArray("Row")]
 unique_name_in_owner = true
 script = ExtResource("7_6qr6t")
 Row = NodePath("..")
 Alignement = 1
-Fight_Zone = NodePath("")
 
 [node name="Selected_E" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Enemies"]
 unique_name_in_owner = true

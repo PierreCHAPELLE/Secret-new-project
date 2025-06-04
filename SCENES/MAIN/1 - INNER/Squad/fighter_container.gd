@@ -29,7 +29,7 @@ func _ready() -> void:
 	return
 
 func init(fighter_resource : FighterResource):
-	Fighter_Current_Stat = Fighter_Resource.duplicate(true)
+	Fighter_Current_Stat = fighter_resource.duplicate(true)
 	name_data.text = fighter_resource.name
 	hp_data.text = str(fighter_resource.HP)
 	atk_data.text = str(fighter_resource.ATK)
