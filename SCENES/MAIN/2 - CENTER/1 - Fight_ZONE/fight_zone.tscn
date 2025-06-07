@@ -89,6 +89,7 @@ entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
 
 [node name="End_ROUND" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "Allies_pool", "Enemies_pool", "entity")]
+unique_name_in_owner = true
 script = ExtResource("7_tx0i4")
 Turn_timer = NodePath("../../Turn_Timer")
 Allies_pool = NodePath("../../VBoxContainer/HBoxContainer/Allies/MarginContainer/Allies_row_y/Allies_Pool")

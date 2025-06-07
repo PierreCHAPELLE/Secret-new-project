@@ -13,6 +13,7 @@ signal start_fight()
 @export var allies_Squad: Squad_ZONE
 @export var enemies_Squad : Squad_ZONE
 
+@export var ready_button : Button
 @onready var states_machine_fight: StatesMachineFight = $StatesMachineFIGHT
 
 func _ready() -> void:
@@ -39,10 +40,20 @@ func _init_fight() -> void:
 	$"Placement Manager".Init_placement(enemies_pool)
 	start_fight.emit()
 
+
 var FIGHTER = preload("uid://bvfvfuyp0w2mo")
 
 func generate_fighter(fighter_container:Fighter_Container,pool : Pool):
 	var fighter:Fighter = FIGHTER.instantiate()
 	pool.add_child(fighter)
 	fighter.init(fighter_container.Fighter_Current_Stat)
+	pass
+
+
+
+@onready var end_round: StateFightEnd_ROUND = %End_ROUND
+
+func _on_ready_pressed() -> void:
+	end_round.round_ready = true
+	
 	pass

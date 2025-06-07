@@ -59,11 +59,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_85okl")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/INNER_UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/INNER_UI"]
+layout_mode = 2
+
+[node name="ready" type="Button" parent="HBoxContainer/INNER_UI/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "Fight"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/INNER_UI/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AllySquad_ZONE" type="VBoxContainer" parent="HBoxContainer/INNER_UI/ScrollContainer"]
+[node name="AllySquad_ZONE" type="VBoxContainer" parent="HBoxContainer/INNER_UI/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_s6idh")
@@ -76,10 +85,11 @@ size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 0
 script = ExtResource("3_fw155")
 
-[node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("allies_Squad", "enemies_Squad") instance=ExtResource("6_cjseh")]
+[node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("allies_Squad", "enemies_Squad", "ready_button") instance=ExtResource("6_cjseh")]
 layout_mode = 2
-allies_Squad = NodePath("../../INNER_UI/ScrollContainer/AllySquad_ZONE")
+allies_Squad = NodePath("../../INNER_UI/VBoxContainer/ScrollContainer/AllySquad_ZONE")
 enemies_Squad = NodePath("../../OUTER_UI/VBoxContainer/ScrollContainer/EnemySquad_ZONE")
+ready_button = NodePath("../../INNER_UI/VBoxContainer/ready")
 
 [node name="World_Zone" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
 layout_mode = 2
@@ -163,8 +173,4 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("15_s6idh")
 
-[node name="Fight" type="Button" parent="HBoxContainer/OUTER_UI/VBoxContainer"]
-layout_mode = 2
-text = "Fight"
-
-[connection signal="pressed" from="HBoxContainer/OUTER_UI/VBoxContainer/Fight" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_fight_pressed"]
+[connection signal="pressed" from="HBoxContainer/INNER_UI/VBoxContainer/ready" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_ready_pressed"]

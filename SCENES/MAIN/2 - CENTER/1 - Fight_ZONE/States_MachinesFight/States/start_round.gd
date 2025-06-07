@@ -5,9 +5,11 @@ class_name StateFightStart_ROUND
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var fight_state: Label = %Fight_State
 
+@onready var placement_manager: Placement_Manager = $"../../Placement Manager"
 
 
 func Enter():
+	placement_manager.Place_Fighter(fight_zone.allies_pool)
 	super()
 	
 	print("la")

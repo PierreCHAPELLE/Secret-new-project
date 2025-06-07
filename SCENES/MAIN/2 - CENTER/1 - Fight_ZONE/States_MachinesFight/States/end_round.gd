@@ -1,21 +1,26 @@
 extends StateFight
 class_name StateFightEnd_ROUND
+@onready var fight_zone: Fight_ZONE = $"../.."
 
+var round_ready :=false
 func Enter():
-	
+	fight_zone.ready_button.show()
 	super()
 	pass
 
 func Exit():
 	super()
+	round_ready = false
+	fight_zone.ready_button.hide()
 	pass
 
 func Update(delta : float):
 	super(delta)
+	
 	if (Allies_pool.get_children().size() == 0 or
 	 Enemies_pool.get_children().size() ==0):
 		Transitioned.emit(self,"End_Fight")
-	else:
+	elif round_ready == true:
 		Transitioned.emit(self,"Start_ROUND")
 	
 	pass
