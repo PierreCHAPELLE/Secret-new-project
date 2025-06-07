@@ -36,7 +36,7 @@ func init(fighter_resource : FighterResource):
 	skin.texture = fighter_resource.visual
 	Define_range(fighter_resource.attack_type)
 	if get_parent() is not Ally_Squad_ZONE:
-		%Boutton.visible == false
+		%Boutton.set_visible(false)
 
 func Define_range(attack_type : int):
 	match  attack_type:

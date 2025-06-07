@@ -3,6 +3,8 @@ extends Squad_ZONE
 class_name Enemy_Squad_ZONE
 func _ready() -> void:
 	SignalBus.get_new_fighter.connect(cleanse_bis)
+	SignalBus.Dialogue_ended.connect(cleanse)
+	
 
 func Generated_EnemySquad_Display(tile_data : CustomTile):
 	if tile_data == null: 
@@ -21,5 +23,8 @@ func cleanse_bis(_list_of_acquired_fighter):
 	pass
 
 func cleanse():
+	if GlobalsVar.dialog_is_running == true:
+		return
+	
 	for child in get_children():
 			child.queue_free()

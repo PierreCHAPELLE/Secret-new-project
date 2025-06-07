@@ -4,6 +4,6 @@
 
 [resource]
 shader = ExtResource("1_328lb")
-shader_parameter/palette_array_size = 3
-shader_parameter/input_palette_array = PackedColorArray(0.898039, 0.898039, 0.898039, 1, 0.364706, 0.368627, 0.4, 1, 0.286275, 0.286275, 0.286275, 1, 0, 0, 0, 1)
-shader_parameter/output_palette_array = PackedColorArray(0, 0.368627, 0, 1, 2.4667e-07, 0.204597, 0.00209891, 1, 0.0879294, 0.24981, 0.0832971, 1, 0, 0, 0, 1)
+shader_parameter/palette_array_size = 4
+shader_parameter/input_palette_array = PackedColorArray(0.898039, 0.898039, 0.898039, 1, 0.286275, 0.286275, 0.286275, 1, 0.364706, 0.368627, 0.4, 1, 0, 0, 0, 1)
+shader_parameter/output_palette_array = PackedColorArray(1.62441e-07, 0.281997, 9.14484e-07, 1, 0.0334846, 0.141005, 0.050915, 1, 0.0373274, 0.141335, 0.0344812, 1, 0, 0, 0, 1)

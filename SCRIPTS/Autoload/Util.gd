@@ -1,6 +1,6 @@
 extends Node
 
-
+var maps :Maps
 
 
 func init_click_signal(maps : Maps)->void:
@@ -29,10 +29,12 @@ func data_to_resource(data : TileData)-> CustomTile:
 
 
 
-func Get_Fighter_from_Dialog():
+func Get_Fighter_from_Dialog(tile_removed : bool):
 	var current_data : TileData = GlobalsVar.current_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA]
 	var customTile : CustomTile = Util.data_to_resource(current_data)
 	SignalBus.get_new_fighter.emit(customTile.Fighter_Resource)
+	if tile_removed == true:
+		maps._delete_current_selected_tile()
 	pass
 
 func init_fight():

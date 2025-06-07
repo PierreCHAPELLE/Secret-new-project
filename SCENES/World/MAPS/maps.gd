@@ -4,7 +4,7 @@ class_name Maps
 
 @export var Testing : bool
 
-enum ENUM_SELECTED_TILE {ATLAS_COOR,ALT_TILE_ID,TILEDATA,SOURCE_ID}
+enum ENUM_SELECTED_TILE {ATLAS_COOR,ALT_TILE_ID,TILEDATA,SOURCE_ID, COOR}
 enum ENUM_CUSTOM_TILE_DATA {RESOURCE}
 
 signal Tile_Clicked(Atlas_Coor : Array)
@@ -22,6 +22,7 @@ signal None_Clicked()
 
 func _ready() -> void:
 	Util.init_click_signal(self)
+	Util.maps = self
 	GlobalsVar.MAIN_Tileset = stuff.tile_set
 	return
 
@@ -46,6 +47,7 @@ func return_tile(mous_pos : Vector2, concerned_layer: TileMapLayer)->void:
 	var tile_data = concerned_layer.tile_set.get_source(source_id).get_tile_data(Array_clicked_tile[0],Array_clicked_tile[1])
 	Array_clicked_tile.append(tile_data)
 	Array_clicked_tile.append(source_id)
+	Array_clicked_tile.append(tile_pos)
 	
 	
 	if tile_data:
@@ -62,3 +64,11 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click") and GlobalsVar.dialog_is_running == false:
 		return_tile(get_global_mouse_position(), stuff)
 	pass
+
+
+
+
+
+func _delete_current_selected_tile():
+	var current_tile : Array= GlobalsVar.current_selected_tile
+	stuff.erase_cell(current_tile[ENUM_SELECTED_TILE.COOR])
