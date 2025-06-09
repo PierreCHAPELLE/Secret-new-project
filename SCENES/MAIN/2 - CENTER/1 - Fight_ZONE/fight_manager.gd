@@ -27,21 +27,21 @@ func do_actions(fighterA : Fighter, fighterE : Fighter)->void:
 
 
 func both_fighter_do_action(fighterA : Fighter, fighterE : Fighter)->void:
-	var typeA = fighterA.Fighter_Current_Stat.ATTACK_TYPE
-	var typeE = fighterE.Fighter_Current_Stat.ATTACK_TYPE
+	var typeA = fighterA.Fighter_Current_Stat.attack_type
+	var typeE = fighterE.Fighter_Current_Stat.attack_type
 	var  destination : Vector2
 	if states_machine_fight.current_turn == 0:
-		if typeA == CLOSE and typeE == CLOSE:
+		if typeA == FighterResource.ATTACK_TYPE.CLOSE and typeE == FighterResource.ATTACK_TYPE.CLOSE:
 			destination = margin_container_meetingpoint.global_position
 			fighterA.Do_Action(fighterE, destination,0)
 			fighterE.Do_Action(fighterA, destination,0)
 			
-		elif typeA == CLOSE:
+		elif typeA == FighterResource.ATTACK_TYPE.CLOSE:
 			destination = fighterE.global_position
 			fighterA.Do_Action(fighterE, destination,0)
 			fighterE.Do_Action(fighterA, destination,0)
 		
-		elif typeE == CLOSE:
+		elif typeE == FighterResource.ATTACK_TYPE.CLOSE:
 			destination = fighterA.global_position
 			fighterA.Do_Action(fighterE, destination,0)
 			fighterE.Do_Action(fighterA, destination,0)

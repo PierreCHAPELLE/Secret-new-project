@@ -8,8 +8,10 @@ enum {
 	
 }
 
-@export var move_curve : Curve
+@export var Projectile_Visual : Array[Texture2D]
 @export var row_y : Control
+
+
 
 @onready var atk_label: Label = %"ATK Value"
 @onready var hp_label: Label = %"HP Value"
@@ -18,7 +20,7 @@ enum {
 var Field_Index : float
 var current_fight_pos : Vector2
 var alive : bool = true
-var Fighter_Current_Stat = FighterResource
+var Fighter_Current_Stat = CurrentFighterResource
 
 var tween :Tween
 var is_avaible := true
@@ -38,14 +40,117 @@ func init(fighter_resource: FighterResource) -> void:
 	pass
 
 
-func Attack()->int:
-	var dmg :int
+func Calculate_damage()->int:
+	var dmg :int = Fighter_Current_Stat.ATK
+	if Fighter_Current_Stat.attack_type == FighterResource.ATTACK_TYPE.HEAL:
+		return -dmg
+	
 	return dmg
 
-func Take_Dmg(fighter_resource:Fighter):
-	fighter_resource.HP -= fighter_resource.atk
-	hp_label.text = str(fighter_resource.HP)
+func Take_Dmg(attacker:Fighter):
+	Fighter_Current_Stat.HP -= attacker.Calculate_damage()
+	Fighter_Current_Stat.HP = clamp(Fighter_Current_Stat.HP, 0, Fighter_Current_Stat.MaxHP)
+	update_ui()
 	pass
+
+func update_ui():
+	hp_label.text = str(Fighter_Current_Stat.HP)
+
+
+func move_to(pos: Vector2, back: bool = false) -> void:
+	is_avaible = false
+	tween = create_tween()
+	tween.tween_property(self, "position", pos, 1.0)
+	await tween.finished
+	if back:
+		tween = create_tween()
+		tween.tween_property(self, "position", current_fight_pos, 1.0)
+		await tween.finished
+		pass
+	is_avaible = true
+	pass
+
+
+func Do_Action(cible:Fighter, destination : Vector2,current_turn):
+	match Fighter_Current_Stat.attack_type:
+		FighterResource.ATTACK_TYPE.CLOSE:
+			if current_turn != 0:
+				return
+			else:
+				Do_Action_close(cible, destination)
+			pass
+		FighterResource.ATTACK_TYPE.RANGE:
+			Do_Action_range(cible, destination)
+			pass
+		FighterResource.ATTACK_TYPE.HEAL:
+			Do_Action_heal(cible, destination)
+		FighterResource.ATTACK_TYPE.MAGIC:
+			Do_Action_magic(cible, destination)
+			pass
+	pass
+
+func Do_Action_close(cible:Fighter, destination : Vector2):
+	await move_to(destination,true)
+	cible.Take_Dmg(self)
+	pass
+
+func Do_Action_range(cible:Fighter, destination : Vector2):
+	await fire_at(destination,Fighter_Current_Stat.attack_type)
+	cible.Take_Dmg(self)
+	pass
+
+func Do_Action_heal(cible:Fighter, destination : Vector2):
+	var heal_target : Fighter
+	if is_in_group("ALLIES"):
+		heal_target = get_tree().get_nodes_in_group("AllIES").pick_random()
+	else:
+		heal_target = get_tree().get_nodes_in_group("ENEMIES").pick_random()
+	await fire_at(heal_target.global_position,Fighter_Current_Stat.attack_type)
+	heal_target.Take_Dmg(self)
+	pass
+
+func Do_Action_magic(cible:Fighter, destination : Vector2):
+	await fire_at(destination,Fighter_Current_Stat.ATTACK_TYPE)
+	cible.Take_Dmg(self)
+	pass
+
+
+
+
+
+
+func fire_at(pos: Vector2, type: bool = false) -> void:
+	is_avaible = false
+	tween = create_tween()
+	
+	%projectile.set_visible(true)
+	%projectile.global_position = self.global_position
+	
+	if is_in_group("ALLIES"):
+		%projectile.set_flip_h(false)
+		%projectile.set_flip_v(false)
+	else:
+		%projectile.set_flip_h(true)
+		%projectile.set_flip_v(true)
+	
+	match type:
+		FighterResource.ATTACK_TYPE.RANGE:
+			%projectile.texture = Projectile_Visual[0]
+		FighterResource.ATTACK_TYPE.HEAL:
+			%projectile.texture = Projectile_Visual[1]
+		FighterResource.ATTACK_TYPE.MAGIC:
+			%projectile.texture = Projectile_Visual[2]
+	
+	tween.tween_property(%projectile,"global_position", pos, 1.0)
+	await tween.finished
+	%projectile.set_visible(false)
+	
+	pass
+
+
+
+
+
 
 
 
@@ -69,55 +174,3 @@ func Take_Dmg(fighter_resource:Fighter):
 				##[false,false,null]
 				##ending_moving.emit()
 	#pass
-
-func move_to(pos: Vector2, back: bool = false) -> void:
-	is_avaible = false
-	tween = create_tween()
-	tween.tween_property(self, "position", pos, 1.0)
-	await tween.finished
-	if back:
-		tween = create_tween()
-		tween.tween_property(self, "position", current_fight_pos, 1.0)
-		await tween.finished
-		pass
-	is_avaible = true
-	pass
-
-
-func Do_Action(cible:Fighter, destination : Vector2,current_turn):
-	match Fighter_Current_Stat.ATTACK_TYPE:
-		FighterResource.ATTACK_TYPE.CLOSE:
-			if current_turn != 0:
-				return
-			else:
-				Do_Action_close(cible, destination)
-			pass
-		FighterResource.ATTACK_TYPE.RANGE:
-			Do_Action_range(cible, destination)
-			pass
-		FighterResource.ATTACK_TYPE.HEAL:
-			Do_Action_heal(cible, destination)
-		FighterResource.ATTACK_TYPE.MAGIC:
-			Do_Action_magic(cible, destination)
-			pass
-	pass
-
-func Do_Action_close(cible:Fighter, destination : Vector2):
-	await move_to(destination,true)
-	cible.Take_Dmg(Fighter_Current_Stat.ATK)
-	pass
-
-func Do_Action_range(cible:Fighter, destination : Vector2):
-	await move_to(destination,true)
-	cible.Take_Dmg(Fighter_Current_Stat.ATK)
-	pass
-
-func Do_Action_heal(cible:Fighter, destination : Vector2):
-	var heal_target : Fighter
-	if is_in_group("ALLIES"):
-		get_tree().get_nodes_in_group("AllIES")
-	pass
-
-func Do_Action_magic(cible:Fighter, destination : Vector2):
-	
-	pass

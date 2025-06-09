@@ -5,7 +5,7 @@ class_name Fighter_Container
 
 
 @export var Fighter_Resource : FighterResource
-@export var Fighter_Current_Stat: FighterResource
+@export var Fighter_Current_Stat: CurrentFighterResource
 @export_group("icon")
 @export var close_icon1 : Texture2D
 @export var close_icon2 : Texture2D
@@ -29,7 +29,7 @@ func _ready() -> void:
 	return
 
 func init(fighter_resource : FighterResource):
-	Fighter_Current_Stat = fighter_resource.duplicate(true)
+	duplicate_template(fighter_resource)
 	name_data.text = fighter_resource.name
 	hp_data.text = str(fighter_resource.HP)
 	atk_data.text = str(fighter_resource.ATK)
@@ -63,4 +63,19 @@ func _on_up_pressed() -> void:
 func _on_down_pressed() -> void:
 	var squad : Squad_ZONE = get_parent()
 	squad._on_fighter_down_requested(self)
+	pass
+
+
+func duplicate_template(fighter_resource : FighterResource):
+	var current_resource = CurrentFighterResource.new()
+	current_resource.visual = fighter_resource.visual
+	current_resource.name = fighter_resource.name
+	current_resource.ATK = fighter_resource.ATK
+	current_resource.attack_type = fighter_resource.attack_type
+	current_resource.bonus_type = fighter_resource.bonus_type
+	current_resource.HP = fighter_resource.HP
+	
+	current_resource.MAX_HP = fighter_resource.HP
+	
+	Fighter_Current_Stat = current_resource
 	pass
