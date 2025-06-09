@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckxaf4t7cong3"]
+[gd_scene load_steps=23 format=3 uid="uid://ckxaf4t7cong3"]
 
 [ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://SCENES/MAIN/MAIN.gd" id="1_rf5wo"]
 [ext_resource type="Script" uid="uid://bs8ek84fttlnv" path="res://SCENES/MAIN/1 - INNER/INNER_UI.gd" id="2_85okl"]
@@ -34,6 +34,60 @@ shader_parameter/input_palette_texture = ExtResource("5_dveii")
 shader_parameter/output_palette_texture = ExtResource("6_xxxxf")
 shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_id6yc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/CENTER_UI/Fight_Zone:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_p2nk2"]
+resource_name = "RESET_fight_zone"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/CENTER_UI/Fight_Zone:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_cjseh"]
+resource_name = "Start_fight_mode"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/CENTER_UI/Fight_Zone:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [0.5, 3.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhmgw"]
+_data = {
+&"RESET": SubResource("Animation_id6yc"),
+&"RESET_fight_zone": SubResource("Animation_p2nk2"),
+&"Start_fight_mode": SubResource("Animation_cjseh")
+}
 
 [node name="Word" type="Control"]
 texture_filter = 1
@@ -73,6 +127,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="AllySquad_ZONE" type="VBoxContainer" parent="HBoxContainer/INNER_UI/VBoxContainer/ScrollContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_s6idh")
@@ -87,6 +142,7 @@ script = ExtResource("3_fw155")
 
 [node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("allies_Squad", "enemies_Squad", "ready_button") instance=ExtResource("6_cjseh")]
 layout_mode = 2
+size_flags_stretch_ratio = 0.5
 allies_Squad = NodePath("../../INNER_UI/VBoxContainer/ScrollContainer/AllySquad_ZONE")
 enemies_Squad = NodePath("../../OUTER_UI/VBoxContainer/ScrollContainer/EnemySquad_ZONE")
 ready_button = NodePath("../../INNER_UI/VBoxContainer/ready")
@@ -111,7 +167,7 @@ disable_3d = true
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(537, 257)
+size = Vector2i(537, 134)
 render_target_update_mode = 4
 
 [node name="World" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer/SubViewport" instance=ExtResource("11_s6idh")]
@@ -172,5 +228,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("15_s6idh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vhmgw")
+}
 
 [connection signal="pressed" from="HBoxContainer/INNER_UI/VBoxContainer/ready" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_ready_pressed"]

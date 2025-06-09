@@ -16,26 +16,27 @@ func Exit():
 	pass
 
 func Update(delta : float):
+	Start_turn_fighter()
+	Define_Currents_Fighter()
+	Transitioned.emit(self,"Do_TURN")
 	super(delta)
 	pass
 
 func Physics_Update(delta : float):
 	super(delta)
-	Turn_timer.start()
-	Define_Currents_Fighter()
-	Transitioned.emit(self,"Do_TURN")
+
 	pass
 
 
 
 func Define_Currents_Fighter():
-	if entity.current_turn < Allies_pool.get_children().size():
-		entity.current_fighter_a =  Allies_pool.get_children()[entity.current_turn]
+	if entity.current_turn < fight_zone.allies_pool.get_children().size():
+		entity.current_fighter_a =  fight_zone.allies_pool.get_children()[entity.current_turn]
 	else:
 		entity.current_fighter_a = null
 	
-	if entity.current_turn < Enemies_pool.get_children().size():
-		entity.current_fighter_e =  Enemies_pool.get_children()[entity.current_turn]
+	if entity.current_turn < fight_zone.enemies_pool.get_children().size():
+		entity.current_fighter_e =  fight_zone.enemies_pool.get_children()[entity.current_turn]
 	else:
 		entity.current_fighter_e = null
 	Define_Selector_Placement(entity.current_fighter_a,selected_a)
@@ -49,3 +50,9 @@ func Define_Selector_Placement(fighter,FightSelector):
 		FightSelector.global_position.y += 80
 	else:
 		FightSelector.visible = false
+
+@onready var turn_timer: Timer = %Turn_Timer
+
+func Start_turn_fighter()->void:
+	turn_timer.start()
+	pass

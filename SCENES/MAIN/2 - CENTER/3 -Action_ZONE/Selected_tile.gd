@@ -9,10 +9,14 @@ var BALLON = preload("res://addons/example_balloon.tscn")
 @onready var selected_tile_title: Label = %Selected_tile_title
 @onready var enemy_squad_zone: Enemy_Squad_ZONE = %EnemySquad_ZONE
 
+# Initialise les connexions de signaux, notamment pour détecter lorsqu'une tile a été mise à jour
 func _ready() -> void:
 	SignalBus.Tile_has_been_updated.connect(_tile_has_been_updated)
 	return
 
+## Fonction déclenchée quand une tile est mise à jour :
+# - Si aucune tile n’est sélectionnée, appelle `unselect_tile`
+# - Sinon, affiche la tile et génère les ennemis associés
 func _tile_has_been_updated():
 	var data_selected_tile = GlobalsVar.current_selected_tile
 	#if data_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA] == null:
@@ -24,14 +28,16 @@ func _tile_has_been_updated():
 		pass
 	var tile_data : TileData = data_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA]
 	enemy_squad_zone.Generated_EnemySquad_Display(Util.data_to_resource(tile_data))
+	return
 
-
+ ##Cache les éléments de l’UI et nettoie la zone ennemie associée
 func unselect_tile() -> void:
 	selected_tile_display.hide()
 	selected_tile_title.hide()
 	enemy_squad_zone.cleanse()
 	return
 
+## Affiche les infos visuelles de la tile sélectionnée (coordonnées, couleur, titre, etc.)
 func select_tile(array_selected_tile : Array) -> void:
 	var selected_coor : Vector2i= array_selected_tile[Maps.ENUM_SELECTED_TILE.ATLAS_COOR]
 	var selected_ALT_ID : int = array_selected_tile[Maps.ENUM_SELECTED_TILE.ALT_TILE_ID]
@@ -44,6 +50,8 @@ func select_tile(array_selected_tile : Array) -> void:
 
 
 
+## Met à jour l'affichage du TextureRect et du Label selon les données de la tile sélectionnée
+# Appelle aussi le dialogue s'il existe
 func Update_visual(selected_coor :Vector2i, _selected_ALT_ID:int,tile_data:TileData,tileset_source_id : int )->void:
 #	mise à jour du texture rect
 	var atlas_source : TileSetAtlasSource = GlobalsVar.MAIN_Tileset.get_source(tileset_source_id)
@@ -72,15 +80,10 @@ func Update_visual(selected_coor :Vector2i, _selected_ALT_ID:int,tile_data:TileD
 	return
 
 
-var test = "le gros paf de ganon"
 
+## Instancie une bulle de dialogue et lance un dialogue à partir d’une ressource donnée
 func _on_dialog_called(DialogRes : DialogueResource, DialogStart : String):
 	var Ballon = BALLON.instantiate() as DialogueManagerExampleBalloon
 	%Ballon_Holder.add_child(Ballon)
-	Ballon
 	Ballon.start(DialogRes, DialogStart)
 	return
-
-
-func Test():
-	print("le gros paf de ganon")

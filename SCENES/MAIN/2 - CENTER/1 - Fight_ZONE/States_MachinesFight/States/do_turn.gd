@@ -3,11 +3,7 @@ class_name StateFightDo_Turn
 
 func Enter():
 	super()
-	#%FIGHT_manager.do_actions(entity.current_fighter_a,entity.current_fighter_e)
-	if entity.current_fighter_a:
-		entity.current_fighter_a.Do_Action()
-	if entity.current_fighter_e:
-		entity.current_fighter_e.Do_Action()
+	%FIGHT_manager.do_actions(entity.current_fighter_a,entity.current_fighter_e)
 	pass
 
 func Exit():

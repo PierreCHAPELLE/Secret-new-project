@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dkpijsugnjvyq"]
+
+[node name="debug container" type="HBoxContainer"]
+
+[node name="visual" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="name" type="Label" parent="."]
+layout_mode = 2

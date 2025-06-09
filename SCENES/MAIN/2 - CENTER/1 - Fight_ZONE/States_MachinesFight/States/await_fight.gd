@@ -1,11 +1,9 @@
-extends State
-class_name StateFight
-
-@export var Turn_timer : Timer
-@export var fight_zone : Fight_ZONE
+extends StateFight
+class_name StateFightAwait_FIGHT
 
 func Enter():
 	super()
+
 	pass
 
 func Exit():
@@ -18,4 +16,8 @@ func Update(delta : float):
 
 func Physics_Update(delta : float):
 	super(delta)
+	pass
+
+func _on_fight_zone_start_fight() -> void:
+	Transitioned.emit(self, "init_FIGHT")
 	pass

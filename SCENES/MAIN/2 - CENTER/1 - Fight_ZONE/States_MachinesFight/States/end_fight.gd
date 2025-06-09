@@ -3,11 +3,14 @@ class_name StateFightEnd_FIGHT
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var fight_state: Label = %Fight_State
 
+
+
+
 func Enter():
 	super()
-	progress_bar.visible = false
-	fight_state.visible = false
-	Transitioned.emit(self, "Init_FIGHT")
+	%ProgressBar.set_visible(false)
+	%Fight_State.set_visible(false)
+	Transitioned.emit(self, "await_FIGHT")
 	pass
 
 func Exit():

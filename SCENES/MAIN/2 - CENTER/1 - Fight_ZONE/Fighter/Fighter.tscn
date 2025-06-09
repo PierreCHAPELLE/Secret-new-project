@@ -12,7 +12,7 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Ally" type="Node2D"]
+[node name="Ally" type="Node2D" groups=["FIGHTERS"]]
 texture_filter = 1
 script = ExtResource("1_72ot8")
 

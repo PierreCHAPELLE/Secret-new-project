@@ -39,3 +39,9 @@ func Get_Fighter_from_Dialog(tile_removed : bool):
 
 func init_fight():
 	pass
+
+func find_fighter_from_squad(fighterC : Fighter_Container, pool : Pool)-> Fighter:
+	for fighter:Fighter in pool.get_children():
+		if fighterC.Fighter_Current_Stat == fighter.Fighter_Current_Stat:
+			return fighter
+	return null
