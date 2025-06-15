@@ -49,7 +49,7 @@ func Calculate_damage()->int:
 
 func Take_Dmg(attacker:Fighter):
 	Fighter_Current_Stat.HP -= attacker.Calculate_damage()
-	Fighter_Current_Stat.HP = clamp(Fighter_Current_Stat.HP, 0, Fighter_Current_Stat.MaxHP)
+	Fighter_Current_Stat.HP = clamp(Fighter_Current_Stat.HP, 0, Fighter_Current_Stat.MAX_HP)
 	update_ui()
 	pass
 
@@ -60,11 +60,11 @@ func update_ui():
 func move_to(pos: Vector2, back: bool = false) -> void:
 	is_avaible = false
 	tween = create_tween()
-	tween.tween_property(self, "position", pos, 1.0)
+	tween.tween_property(self, "global_position", pos, 1.0)
 	await tween.finished
 	if back:
 		tween = create_tween()
-		tween.tween_property(self, "position", current_fight_pos, 1.0)
+		tween.tween_property(self, "global_position", current_fight_pos, 1.0)
 		await tween.finished
 		pass
 	is_avaible = true

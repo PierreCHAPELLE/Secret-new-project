@@ -10,9 +10,9 @@ func  Init_placement(pool : Pool, squad : Squad_ZONE)->void:
 
 func Place_Fighter(pool: Pool)->void:
 	var index_rank := 0
-	var PosY : float = allies_row_y.size.y / 1.5
+	var PosY : float = allies_row_y.global_position.y + allies_row_y.size.y / 1.5
 	var PosX:float
-	var sizeX : float = allies_row_y.size.x
+	var sizeX : float = allies_row_y.global_position.x + allies_row_y.size.x
 	for fighter: Fighter in pool.get_children():
 		if pool.Alignement == Pool.ALIGNEMENT.ALLY:
 			PosX = sizeX - (sizeX * fighter.Field_Index)
