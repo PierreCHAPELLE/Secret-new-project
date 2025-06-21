@@ -24,9 +24,7 @@ func Exit():
 func Update(delta : float):
 	if can_i_transition():
 		Transitioned.emit(self,"Start_TURN")
-		print('je veux transitionné')
 	else:
-		print('je peux pas transitionné')
 		return
 	super(delta)
 	pass
@@ -35,12 +33,7 @@ func Physics_Update(delta : float):
 	super(delta)
 	pass
 
-func can_i_transition()->bool:
-	var result : bool = false
-	for fighter : Fighter in get_tree().get_nodes_in_group("FIGHTERS"):
-		if fighter.tween.is_running():
-			return false
-	return true
+
 
 
 

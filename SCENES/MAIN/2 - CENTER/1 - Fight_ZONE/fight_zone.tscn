@@ -90,7 +90,7 @@ metadata/_custom_type_script = "uid://b5te4cutppmfp"
 [node name="Init_FIGHT" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("3_t0g6e")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -103,7 +103,7 @@ one_shot = true
 [node name="Start_ROUND" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("4_6qr6t")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -111,7 +111,7 @@ metadata/_custom_type_script = "uid://ixkr78msrlfh"
 [node name="Start_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("5_jjf73")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -119,7 +119,7 @@ metadata/_custom_type_script = "uid://ixkr78msrlfh"
 [node name="Do_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("6_6qr6t")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -131,7 +131,7 @@ script = ExtResource("10_6qr6t")
 [node name="End_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("6_ya80m")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -139,7 +139,7 @@ metadata/_custom_type_script = "uid://ixkr78msrlfh"
 [node name="End_ROUND" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("7_tx0i4")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -147,7 +147,7 @@ metadata/_custom_type_script = "uid://ixkr78msrlfh"
 [node name="End_FIGHT" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("Turn_timer", "fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("8_ufjjl")
-Turn_timer = NodePath("../../Turn_Timer")
+Turn_timer = NodePath("")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
@@ -157,7 +157,6 @@ unique_name_in_owner = true
 script = ExtResource("6_t0g6e")
 
 [node name="Turn_Timer" type="Timer" parent="."]
-unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
@@ -270,5 +269,4 @@ libraries = {
 
 [connection signal="start_fight" from="." to="StatesMachineFIGHT/Await_FIGHT" method="_on_fight_zone_start_fight"]
 [connection signal="timeout" from="StatesMachineFIGHT/Init_FIGHT/Init_Fight_Timer" to="StatesMachineFIGHT/Init_FIGHT" method="_on_timer_timeout"]
-[connection signal="timeout" from="Turn_Timer" to="StatesMachineFIGHT/Do_TURN" method="_on_turn_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StatesMachineFIGHT/Init_FIGHT" method="_on_animation_player_animation_finished"]

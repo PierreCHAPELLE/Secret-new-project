@@ -19,3 +19,12 @@ func Update(delta : float):
 func Physics_Update(delta : float):
 	super(delta)
 	pass
+
+
+
+func can_i_transition()->bool:
+	var result : bool = false
+	for fighter : Fighter in get_tree().get_nodes_in_group("FIGHTERS"):
+		if fighter.tween.is_running():
+			return false
+	return true

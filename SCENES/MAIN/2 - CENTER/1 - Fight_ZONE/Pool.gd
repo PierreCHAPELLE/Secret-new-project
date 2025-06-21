@@ -31,3 +31,5 @@ func verif_available_fighter(current_turn:int):
 	if current_turn + 1 > get_children().size():
 		All_Fighter_Attacked = true
 	pass
+func _process(delta: float) -> void:
+	position = Vector2.ZERO

@@ -71,7 +71,23 @@ func move_to(pos: Vector2, back: bool = false) -> void:
 	pass
 
 
-func Do_Action(cible:Fighter, destination : Vector2,current_turn):
+func choose_destination(cible:Fighter,current_turn :int)->Vector2:
+	var parent :Pool = get_parent() 
+	var result : Vector2
+	if current_turn ==0 and cible.Fighter_Current_Stat.ATTACK_TYPE == FighterResource.ATTACK_TYPE.CLOSE:
+		if parent.Alignement == Pool.ALIGNEMENT.ALLY:
+			result = Vector2(cible.get_parent().position.y,self.position.y)
+			pass
+		else:
+			result = Vector2(parent.position.y,self.position.y)
+			pass
+	else:
+		result = cible.get_parent().get_child(0).position
+	return result
+
+
+func Do_Action(cible:Fighter,current_turn:int):
+	var destination = choose_destination(cible,current_turn)
 	match Fighter_Current_Stat.attack_type:
 		FighterResource.ATTACK_TYPE.CLOSE:
 			if current_turn != 0:

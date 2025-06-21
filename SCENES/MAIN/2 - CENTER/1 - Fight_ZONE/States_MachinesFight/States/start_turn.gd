@@ -16,7 +16,6 @@ func Exit():
 	pass
 
 func Update(delta : float):
-	Start_turn_fighter()
 	Define_Currents_Fighter()
 	Transitioned.emit(self,"Do_TURN")
 	super(delta)
@@ -52,7 +51,3 @@ func Define_Selector_Placement(fighter,FightSelector):
 		FightSelector.visible = false
 
 @onready var turn_timer: Timer = %Turn_Timer
-
-func Start_turn_fighter()->void:
-	turn_timer.start()
-	pass
