@@ -63,7 +63,7 @@ func return_tile(mous_pos : Vector2, concerned_layer: TileMapLayer)->void:
 	else:
 		None_Clicked.emit()
 		return
-	return
+
 
 
 # Intercepte l'entrée utilisateur :

@@ -1,11 +1,7 @@
 ~ start
-Narateur: [[Hi|Hello|Howdy]], this is some dialogue.
-Narateur: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
-=> END
+Narateur: dialogue de test.
+- ajout allie 
+	[do Util.Get_Fighter_from_Dialog()]=> END
+- ajout enemy + fight
+	 [do GlobalsVar.Fight_Zone._init_fight()]=> END
+

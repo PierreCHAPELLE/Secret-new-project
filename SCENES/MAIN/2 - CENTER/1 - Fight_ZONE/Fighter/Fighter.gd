@@ -1,5 +1,12 @@
 extends Node2D
 class_name Fighter
+
+
+const  HP_INDICATEUR = preload("uid://bi35m6irf0n7k")
+
+
+#pas utiliser pour l'instant
+@warning_ignore("unused_signal")
 signal ending_moving()
 
 enum {
@@ -23,14 +30,15 @@ var alive : bool = true
 var Fighter_Current_Stat = CurrentFighterResource
 
 var tween :Tween
-var is_avaible := true
+var _is_available := true
+
+var Placed := false
 
 func init(fighter_resource: FighterResource) -> void:
 	Fighter_Current_Stat = fighter_resource
 	atk_label.text = str(fighter_resource.ATK)
 	hp_label.text = str(fighter_resource.HP)
 	sprite_2d.texture = fighter_resource.visual
-	print("j'existe")
 	var parent : Pool = get_parent()
 	if parent.Alignement == Pool.ALIGNEMENT.ALLY:
 		add_to_group("ALLIES")
@@ -48,38 +56,52 @@ func Calculate_damage()->int:
 	return dmg
 
 func Take_Dmg(attacker:Fighter):
-	Fighter_Current_Stat.HP -= attacker.Calculate_damage()
+	print("je suis :" + Fighter_Current_Stat.name + "\n" +
+		"attaqué par : " + attacker.Fighter_Current_Stat.name + "\n"+
+		"J'ai : " + str(Fighter_Current_Stat.HP)+"hp" + "\n"+
+		"je vais prendre :" + str(attacker.Calculate_damage()) + "damag"+ "\n\n"
+		)
+	
+	var dmg : int = attacker.Calculate_damage()
+	await generate_hp_indicateur(dmg).finished
+	
+	Fighter_Current_Stat.HP -= dmg
 	Fighter_Current_Stat.HP = clamp(Fighter_Current_Stat.HP, 0, Fighter_Current_Stat.MAX_HP)
 	update_ui()
 	pass
+func generate_hp_indicateur(dmg)->Hp_Indicateur:
+	var hp_ind = HP_INDICATEUR.instantiate() as Hp_Indicateur
+	%Indicateur_Spawn.add_child(hp_ind)
+	hp_ind.init(dmg)
+	return hp_ind
 
 func update_ui():
 	hp_label.text = str(Fighter_Current_Stat.HP)
 
 
-func move_to(pos: Vector2, back: bool = false) -> void:
-	is_avaible = false
+func move_to(pos: Vector2, back: bool = false, spd := 1.00, back_spd:=1.00) -> void:
+	_is_available = false
 	tween = create_tween()
-	tween.tween_property(self, "global_position", pos, 1.0)
+	tween.tween_property(self, "position", pos, spd)
 	await tween.finished
 	if back:
 		tween = create_tween()
-		tween.tween_property(self, "global_position", current_fight_pos, 1.0)
+		tween.tween_property(self, "position", current_fight_pos, back_spd)
 		await tween.finished
 		pass
-	is_avaible = true
+	_is_available = true
 	pass
 
 
-func choose_destination(cible:Fighter,current_turn :int)->Vector2:
+func choose_destination(cible:Fighter,current_turn :float)->Vector2:
 	var parent :Pool = get_parent() 
 	var result : Vector2
-	if current_turn ==0 and cible.Fighter_Current_Stat.ATTACK_TYPE == FighterResource.ATTACK_TYPE.CLOSE:
+	if current_turn == 0 and cible.Fighter_Current_Stat.attack_type == FighterResource.ATTACK_TYPE.CLOSE:
 		if parent.Alignement == Pool.ALIGNEMENT.ALLY:
-			result = Vector2(cible.get_parent().position.y,self.position.y)
+			result = Vector2(parent.get_parent().size.x,self.position.y)
 			pass
 		else:
-			result = Vector2(parent.position.y,self.position.y)
+			result = Vector2(parent.position.x,self.position.y)
 			pass
 	else:
 		result = cible.get_parent().get_child(0).position
@@ -106,7 +128,7 @@ func Do_Action(cible:Fighter,current_turn:int):
 	pass
 
 func Do_Action_close(cible:Fighter, destination : Vector2):
-	await move_to(destination,true)
+	await move_to(destination,true,0.5)
 	cible.Take_Dmg(self)
 	pass
 
@@ -115,10 +137,10 @@ func Do_Action_range(cible:Fighter, destination : Vector2):
 	cible.Take_Dmg(self)
 	pass
 
-func Do_Action_heal(cible:Fighter, destination : Vector2):
+func Do_Action_heal(_cible:Fighter, _destination : Vector2):
 	var heal_target : Fighter
 	if is_in_group("ALLIES"):
-		heal_target = get_tree().get_nodes_in_group("AllIES").pick_random()
+		heal_target = get_tree().get_nodes_in_group("ALLIES").pick_random()
 	else:
 		heal_target = get_tree().get_nodes_in_group("ENEMIES").pick_random()
 	await fire_at(heal_target.global_position,Fighter_Current_Stat.attack_type)
@@ -126,7 +148,7 @@ func Do_Action_heal(cible:Fighter, destination : Vector2):
 	pass
 
 func Do_Action_magic(cible:Fighter, destination : Vector2):
-	await fire_at(destination,Fighter_Current_Stat.ATTACK_TYPE)
+	await fire_at(destination,Fighter_Current_Stat.attack_type)
 	cible.Take_Dmg(self)
 	pass
 
@@ -135,8 +157,8 @@ func Do_Action_magic(cible:Fighter, destination : Vector2):
 
 
 
-func fire_at(pos: Vector2, type: bool = false) -> void:
-	is_avaible = false
+func fire_at(pos: Vector2, type: FighterResource.ATTACK_TYPE) -> void:
+	_is_available = false
 	tween = create_tween()
 	
 	%projectile.set_visible(true)
@@ -162,31 +184,3 @@ func fire_at(pos: Vector2, type: bool = false) -> void:
 	%projectile.set_visible(false)
 	
 	pass
-
-
-
-
-
-
-
-
-
-#var destination_point : Vector2
-#var Should_i_move = [false,false,null]
-#func move_to(pos: Vector2,back : bool)->void:
-	#tween.is_running()
-	#destination_point = pos
-	#var old_pos = Vector2(global_position.x,global_position.y)
-	#Should_i_move = [true,back,old_pos]
-	#pass
-#func _process(delta: float) -> void:
-	##if Should_i_move[0]:
-		##global_position.y = lerp(global_position.y,destination_point.y, 0.1)
-		##if global_position.y == destination_point.y:
-			##if Should_i_move[1]:
-				##destination_point.y = Should_i_move[2]
-				##Should_i_move[1] = false
-			##else:
-				##[false,false,null]
-				##ending_moving.emit()
-	#pass

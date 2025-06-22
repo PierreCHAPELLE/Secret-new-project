@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://bctglyx1ru0fl"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://bctglyx1ru0fl"]
 
 [ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="1_25c1e"]
 [ext_resource type="Resource" uid="uid://bimoiqi7kicx8" path="res://DATA/Tile_Data/HeroCat_Tile.tres" id="1_e7jmg"]
 [ext_resource type="Texture2D" uid="uid://bwexog6613pmr" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Fourniture_Outline.png" id="2_p5hrh"]
 [ext_resource type="Texture2D" uid="uid://knxnqtxbnkmw" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Item_Outline.png" id="3_e7jmg"]
 [ext_resource type="Texture2D" uid="uid://bkwsb7o8eyvnj" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Terrain_Outline.png" id="4_30alr"]
+[ext_resource type="Resource" uid="uid://cofyb3pl4pc0t" path="res://DATA/Tile_Data/testing_tile.tres" id="4_34ld8"]
 [ext_resource type="Texture2D" uid="uid://cjkix2p0w5wyn" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/character.png" id="5_vxpr7"]
 [ext_resource type="Resource" uid="uid://bdud4iqwidbeb" path="res://DATA/Tile_Data/Mouse_Tile.tres" id="6_30alr"]
 [ext_resource type="Texture2D" uid="uid://h5gbedtur0iv" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/fourniture.png" id="6_34ld8"]
@@ -420,7 +421,10 @@ texture_region_size = Vector2i(18, 18)
 7:7/0 = 0
 8:7/0 = 0
 9:7/0 = 0
+10:7/next_alternative_id = 2
 10:7/0 = 0
+10:7/1 = 1
+10:7/1/custom_data_0 = ExtResource("4_34ld8")
 11:7/0 = 0
 12:7/0 = 0
 13:7/0 = 0

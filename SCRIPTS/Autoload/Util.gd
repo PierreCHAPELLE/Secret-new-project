@@ -3,9 +3,9 @@ extends Node
 var maps :Maps
 
 
-func init_click_signal(maps : Maps)->void:
-	maps.Tile_Clicked.connect(_selected_tile_from_map)
-	maps.None_Clicked.connect(_selected_none_from_map)
+func init_click_signal(map : Maps)->void:
+	map.Tile_Clicked.connect(_selected_tile_from_map)
+	map.None_Clicked.connect(_selected_none_from_map)
 	return
 
 func _selected_none_from_map()->void:
@@ -29,7 +29,7 @@ func data_to_resource(data : TileData)-> CustomTile:
 
 
 
-func Get_Fighter_from_Dialog(tile_removed : bool):
+func Get_Fighter_from_Dialog(tile_removed : bool=false):
 	var current_data : TileData = GlobalsVar.current_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA]
 	var customTile : CustomTile = Util.data_to_resource(current_data)
 	SignalBus.get_new_fighter.emit(customTile.Fighter_Resource)

@@ -9,10 +9,9 @@ func  Init_placement(pool : Pool, squad : Squad_ZONE)->void:
 	return
 
 func Place_Fighter(pool: Pool)->void:
-	var index_rank := 0
-	var PosY : float = allies_row_y.global_position.y + allies_row_y.size.y / 1.5
+	var PosY : float = allies_row_y.size.y / 1.5
 	var PosX:float
-	var sizeX : float = allies_row_y.global_position.x + allies_row_y.size.x
+	var sizeX : float = allies_row_y.size.x
 	for fighter: Fighter in pool.get_children():
 		if pool.Alignement == Pool.ALIGNEMENT.ALLY:
 			PosX = sizeX - (sizeX * fighter.Field_Index)
@@ -22,6 +21,7 @@ func Place_Fighter(pool: Pool)->void:
 			pass
 		fighter.current_fight_pos = Vector2(PosX,PosY)
 		fighter.move_to(Vector2(PosX,PosY))
+		fighter.Placed = true
 		pass
 
 func Attribution_of_ration(squad : Squad_ZONE, pool : Pool)->void:
@@ -33,5 +33,6 @@ func Attribution_of_ration(squad : Squad_ZONE, pool : Pool)->void:
 		index_rank +=1
 		concerned_fighter.Field_Index = index_rank * ration_mult
 		pool.move_child(concerned_fighter,index_rank-1)
+		print(concerned_fighter.Fighter_Current_Stat.name)
 		pass
 	

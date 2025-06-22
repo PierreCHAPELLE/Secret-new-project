@@ -22,7 +22,7 @@ signal start_fight()
 func _ready() -> void:
 	GlobalsVar.Fight_Zone = self
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if progress_bar.visible ==  true:
 		progress_bar.value = (1 - Turn_Timer.time_left / Turn_Timer.wait_time) * 100 
 		%Fight_State.text = states_machine_fight.current_state.name

@@ -1,6 +1,7 @@
 extends Camera2D
 class_name PanningCamera2D
-@onready var map: TileMapLayer = %Maps
+@onready var map: Maps = %MAPS
+
 
 @export var CameraLimit : CollisionShape2D
 
