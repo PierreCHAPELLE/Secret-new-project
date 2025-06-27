@@ -3,7 +3,7 @@ extends Squad_ZONE
 class_name Enemy_Squad_ZONE
 func _ready() -> void:
 	SignalBus.get_new_fighter.connect(cleanse_bis)
-	SignalBus.Dialogue_ended.connect(cleanse)
+	#SignalBus.Dialogue_ended.connect(cleanse)
 	
 
 func Generated_EnemySquad_Display(tile_data : CustomTile):

@@ -12,7 +12,7 @@ class_name PanningCamera2D
 
 @export var _target_zoom: float = 2
 
-var _tween: Tween = create_tween()
+var _tween: Tween
 var is_dragging := false
 var last_mouse_position := Vector2.ZERO
 
@@ -75,4 +75,7 @@ func zoom_out() -> void:
 
 # Centre la caméra sur une position cible avec un effet de transition douce (tween de 0.2s)
 func focus_position(target_position: Vector2) -> void:
+	if _tween and _tween.is_valid():
+		_tween.kill()  # Stoppe l'ancien tween si toujours actif
+	_tween = create_tween()
 	_tween.tween_property(self, "position", target_position, 0.2)

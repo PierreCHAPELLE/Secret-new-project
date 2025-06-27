@@ -9,8 +9,8 @@ class_name StateFightStart_ROUND
 
 func Enter():
 	await get_tree().process_frame
-	await placement_manager.Init_placement(fight_zone.allies_pool,fight_zone.allies_Squad)
-	await placement_manager.Init_placement(fight_zone.enemies_pool,fight_zone.enemies_Squad)
+	placement_manager.Init_placement(fight_zone.allies_pool,fight_zone.allies_Squad)
+	placement_manager.Init_placement(fight_zone.enemies_pool,fight_zone.enemies_Squad)
 	
 	super()
 	progress_bar.visible = true

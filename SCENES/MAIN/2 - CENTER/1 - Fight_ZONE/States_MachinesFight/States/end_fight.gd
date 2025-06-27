@@ -10,6 +10,7 @@ func Enter():
 	super()
 	%ProgressBar.set_visible(false)
 	%Fight_State.set_visible(false)
+	GlobalsVar.fight_is_running = false
 	Transitioned.emit(self, "await_FIGHT")
 	pass
 

@@ -22,6 +22,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalsVar="*res://SCRIPTS/Autoload/GlobalsVar.gd"
 Util="*res://SCRIPTS/Autoload/Util.gd"
 SignalBus="*res://SCRIPTS/Autoload/SignalBus.gd"
+FightManager="*res://SCRIPTS/Autoload/fight_manager.gd"
 
 [display]
 
@@ -59,7 +60,7 @@ Click={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://addons/dialogue.dialogue", "res://addons/Testing.dialogue", "res://DATA/Dialog_Resource/ClosedTonneau.dialogue", "res://DATA/Dialog_Resource/Gnome\'s Barrel.dialogue", "res://DATA/Dialog_Resource/Armoire.dialogue", "res://DATA/Dialog_Resource/Hero_Cat.dialogue", "res://DATA/Dialog_Resource/Mouse.dialogue")
+locale/translations_pot_files=PackedStringArray("res://addons/dialogue.dialogue", "res://DATA/Dialog_Resource/ClosedTonneau.dialogue", "res://DATA/Dialog_Resource/Gnome\'s Barrel.dialogue", "res://DATA/Dialog_Resource/Armoire.dialogue", "res://DATA/Dialog_Resource/Hero_Cat.dialogue", "res://DATA/Dialog_Resource/Mouse.dialogue", "res://DATA/Dialog_Resource/Testing.dialogue")
 
 [rendering]
 

@@ -8,6 +8,8 @@ func Enter():
 	%ProgressBar.set_visible(true)
 	%Fight_State.set_visible(true)
 	%AnimationPlayer.play("start_fight")
+	GlobalsVar.fight_is_running = true
+	FightManager
 	pass
 
 func Exit():

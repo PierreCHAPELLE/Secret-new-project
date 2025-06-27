@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvfvfuyp0w2mo"]
+[gd_scene load_steps=12 format=3 uid="uid://bvfvfuyp0w2mo"]
 
 [ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="1_3u4w6"]
 [ext_resource type="Script" uid="uid://b6d3omebgq8vh" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fighter/Fighter.gd" id="1_72ot8"]
 [ext_resource type="Texture2D" uid="uid://knxnqtxbnkmw" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Item_Outline.png" id="2_cnba3"]
+[ext_resource type="Texture2D" uid="uid://bwexog6613pmr" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Fourniture_Outline.png" id="3_x4ntt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4ntt"]
 atlas = ExtResource("2_cnba3")
@@ -15,6 +16,10 @@ region = Rect2(180, 162, 18, 18)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7r7it"]
 atlas = ExtResource("2_cnba3")
 region = Rect2(144, 180, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2d2h"]
+atlas = ExtResource("3_x4ntt")
+region = Rect2(126, 144, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73sq3"]
 atlas = ExtResource("1_3u4w6")
@@ -33,6 +38,7 @@ region = Rect2(198, 144, 18, 18)
 texture_filter = 1
 script = ExtResource("1_72ot8")
 Projectile_Visual = Array[Texture2D]([SubResource("AtlasTexture_x4ntt"), SubResource("AtlasTexture_pvri2"), SubResource("AtlasTexture_7r7it")])
+Dead_Visual = SubResource("AtlasTexture_g2d2h")
 
 [node name="Sprite2D" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -93,6 +99,7 @@ label_settings = SubResource("LabelSettings_cnba3")
 unique_name_in_owner = true
 visible = false
 rotation = 0.785398
+scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_8mimw")
 
 [node name="Indicateur_Spawn" type="Marker2D" parent="."]

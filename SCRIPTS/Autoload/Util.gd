@@ -35,6 +35,7 @@ func Get_Fighter_from_Dialog(tile_removed : bool=false):
 	SignalBus.get_new_fighter.emit(customTile.Fighter_Resource)
 	if tile_removed == true:
 		maps._delete_current_selected_tile()
+		
 	pass
 
 func init_fight():

@@ -5,9 +5,11 @@ class_name StateFightStart_TURN
 @onready var selected_e: Sprite2D = %Selected_E
 
 
+@onready var turn_timer: Timer = %Turn_Timer
 
 
 func Enter():
+	turn_timer.start()
 	super()
 	pass
 
@@ -49,5 +51,3 @@ func Define_Selector_Placement(fighter,FightSelector):
 		FightSelector.global_position.y += 80
 	else:
 		FightSelector.visible = false
-
-@onready var turn_timer: Timer = %Turn_Timer

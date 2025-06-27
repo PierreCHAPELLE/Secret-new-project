@@ -1,7 +1,0 @@
-~ start
-Narateur: dialogue de test.
-- ajout allie 
-	[do Util.Get_Fighter_from_Dialog()]=> END
-- ajout enemy + fight
-	 [do GlobalsVar.Fight_Zone._init_fight()]=> END
-

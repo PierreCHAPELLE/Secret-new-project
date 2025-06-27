@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbiq60fq5wx"]
+[gd_scene load_steps=19 format=3 uid="uid://cbiq60fq5wx"]
 
 [ext_resource type="Script" uid="uid://dl3genud7au2d" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fight_ZONE.gd" id="1_mxm40"]
 [ext_resource type="Script" uid="uid://cfxa54w24myu0" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/states_machineFight.gd" id="2_n8o8w"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://bb5ex16f1dnnv" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Pool.gd" id="7_6qr6t"]
 [ext_resource type="Script" uid="uid://cf2230hqk3kqc" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_round.gd" id="7_tx0i4"]
 [ext_resource type="Script" uid="uid://cihlldlruqiex" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_fight.gd" id="8_ufjjl"]
-[ext_resource type="Script" uid="uid://c32cqmshksyn1" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/fight_manager.gd" id="10_6qr6t"]
 [ext_resource type="Texture2D" uid="uid://dmdb8i0nk5agx" path="res://ASSETS/VISUAL/UI-visual/Fight_Selector.png" id="13_t0g6e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsxww"]
@@ -119,10 +118,6 @@ script = ExtResource("6_6qr6t")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
-
-[node name="FIGHT_manager" type="Node" parent="StatesMachineFIGHT/Do_TURN"]
-unique_name_in_owner = true
-script = ExtResource("10_6qr6t")
 
 [node name="End_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("fight_zone", "entity")]
 unique_name_in_owner = true

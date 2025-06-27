@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CustomTile" load_steps=8 format=3 uid="uid://cofyb3pl4pc0t"]
 
-[ext_resource type="Resource" uid="uid://jsnmyyye8qg2" path="res://addons/Testing.dialogue" id="1_s6lk4"]
+[ext_resource type="Resource" uid="uid://jsnmyyye8qg2" path="res://DATA/Dialog_Resource/Testing.dialogue" id="1_s6lk4"]
 [ext_resource type="Script" uid="uid://b4ejvb3mjkvis" path="res://SCRIPTS/Custom_Resource/FighterResource.gd" id="2_i5d1v"]
 [ext_resource type="Resource" uid="uid://dtnps66of4fye" path="res://DATA/Fighter_Resource/test/test1.tres" id="3_867wp"]
 [ext_resource type="Resource" uid="uid://slxqhcp7nxko" path="res://DATA/Fighter_Resource/test/test2.tres" id="4_mnowk"]

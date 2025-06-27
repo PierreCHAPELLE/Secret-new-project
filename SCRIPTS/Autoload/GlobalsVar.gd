@@ -7,6 +7,7 @@ var MAIN_Tileset : TileSet
 
 var current_selected_tile : Array
 var dialog_is_running : bool = false
+var fight_is_running : bool = false
 var Fight_Zone : Fight_ZONE
 
 

@@ -25,6 +25,5 @@ func Physics_Update(delta : float):
 func can_i_transition()->bool:
 	for fighter : Fighter in get_tree().get_nodes_in_group("FIGHTERS"):
 		if fighter.tween.is_running() or fighter.Placed == false:
-			print(fighter)
 			return false
 	return true
