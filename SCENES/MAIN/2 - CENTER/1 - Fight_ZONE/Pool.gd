@@ -1,15 +1,31 @@
 extends Node2D
 class_name Pool
 
-enum ALIGNEMENT {ALLY,ENEMY}
 @export var Row : Control
 
-@export var Alignement : ALIGNEMENT
+@export var Alignement : GlobalsVar.ALIGNEMENT
 
 
 @export var Fight_Zone : Fight_ZONE
 
 var All_Fighter_Attacked : bool = false
+
+
+
+func _ready() -> void:
+	if Alignement == GlobalsVar.ALIGNEMENT.ALLY:
+		FightManager.Ally_Pool = self
+		pass
+	else:
+		FightManager.Enemy_Pool = self
+		pass
+	pass
+
+
+
+
+
+
 func Excute_Round():
 	All_Fighter_Attacked = false
 	pass 

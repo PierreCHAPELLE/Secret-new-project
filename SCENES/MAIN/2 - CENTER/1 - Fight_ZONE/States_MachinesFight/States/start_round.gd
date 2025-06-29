@@ -9,14 +9,11 @@ class_name StateFightStart_ROUND
 
 func Enter():
 	await get_tree().process_frame
-	placement_manager.Init_placement(fight_zone.allies_pool,fight_zone.allies_Squad)
-	placement_manager.Init_placement(fight_zone.enemies_pool,fight_zone.enemies_Squad)
-	
+	placement_manager.Init_placement(FightManager.Ally_Pool, fight_zone.allies_Squad)
+	placement_manager.Init_placement_e(FightManager.Enemy_Pool)
 	super()
-	progress_bar.visible = true
-	fight_state.visible = true
-	Define_Number_Turn()
-	entity.current_turn = 0
+	FightManager.Define_Number_Turn()
+	FightManager.current_turn = 0
 	pass
 
 func Exit():
@@ -33,15 +30,4 @@ func Update(delta : float):
 
 func Physics_Update(delta : float):
 	super(delta)
-	pass
-
-
-
-
-
-
-func Define_Number_Turn():
-	var number_alive_in_pool_a : int = fight_zone.allies_pool.get_children().size()
-	var number_alive_in_pool_e : int = fight_zone.enemies_pool.get_children().size()
-	entity.number_of_turn_by_round = max(number_alive_in_pool_a,number_alive_in_pool_e)
 	pass

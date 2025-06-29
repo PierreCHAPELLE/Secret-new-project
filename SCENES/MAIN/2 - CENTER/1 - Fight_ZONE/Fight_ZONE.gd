@@ -21,6 +21,7 @@ signal start_fight()
 
 func _ready() -> void:
 	GlobalsVar.Fight_Zone = self
+	size_flags_stretch_ratio = 0.5
 
 func _process(_delta: float) -> void:
 	if progress_bar.visible ==  true:

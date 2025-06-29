@@ -2,13 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://dsxrak077ungi" path="res://DATA/Dialog_Resource/Hero_Cat.dialogue" id="1_q5vr2"]
 [ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="1_t5pkv"]
-[ext_resource type="Script" uid="uid://b4ejvb3mjkvis" path="res://SCRIPTS/Custom_Resource/FighterResource.gd" id="2_jeubu"]
-[ext_resource type="Resource" uid="uid://chpp6xrw2j3gj" path="res://DATA/Fighter_Resource/Hero_cat_FighterResource.tres" id="2_qoc3m"]
+[ext_resource type="Script" uid="uid://bkuo5elxm6psy" path="res://SCRIPTS/Custom_Resource/CurrentFighterResource.gd" id="2_g0jdl"]
+[ext_resource type="Resource" uid="uid://7mdf5a3g0gdm" path="res://DATA/Fighter_Resource/Cat_FighterResource.tres" id="3_43pqo"]
 
 [resource]
 script = ExtResource("1_t5pkv")
 Title = "Petit Con"
 Dialog = ExtResource("1_q5vr2")
-Fighter_Resource = Array[ExtResource("2_jeubu")]([ExtResource("2_qoc3m")])
-SimpleLine = Array[String]([])
+Fighter_Resource = Array[ExtResource("2_g0jdl")]([ExtResource("3_43pqo")])
 metadata/_custom_type_script = "uid://didhnqpcbw0vx"

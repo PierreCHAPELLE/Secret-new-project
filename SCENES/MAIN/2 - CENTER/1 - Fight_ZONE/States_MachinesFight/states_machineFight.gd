@@ -6,10 +6,6 @@ class_name StatesMachineFight
 #current_state : State
 #states: Dictionary = {}
 
-var number_of_turn_by_round : int
-var current_turn : int = 0
-var current_fighter_a : Fighter
-var current_fighter_e : Fighter
 
 
 func _ready():

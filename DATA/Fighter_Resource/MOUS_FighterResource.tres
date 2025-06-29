@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CurrentFighterResource" load_steps=5 format=3 uid="uid://bs86qnr6tuof4"]
+
+[ext_resource type="Script" uid="uid://bn125d7k68876" path="res://SCRIPTS/Custom_Resource/ItemResource.gd" id="1_85d1y"]
+[ext_resource type="Script" uid="uid://bkuo5elxm6psy" path="res://SCRIPTS/Custom_Resource/CurrentFighterResource.gd" id="2_lofk5"]
+[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="3_lofk5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6os1"]
+atlas = ExtResource("3_lofk5")
+region = Rect2(288, 126, 18, 18)
+
+[resource]
+script = ExtResource("2_lofk5")
+MAX_HP = 0
+visual = SubResource("AtlasTexture_m6os1")
+name = "La Souris Souriante"
+HP = 1
+ATK = 1
+attack_type = 0
+bonus_type = Array[int]([])
+item_wore = Array[ExtResource("1_85d1y")]([])
+metadata/_custom_type_script = "uid://bkuo5elxm6psy"

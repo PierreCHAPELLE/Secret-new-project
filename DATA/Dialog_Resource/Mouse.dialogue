@@ -10,7 +10,7 @@ NARRATOR: Tu sais ce que tu dois faire...
 
 
 ~ mousefight
-NARRATOR: let's go[do GlobalsVar.Fight_Zone._init_fight()]
+NARRATOR: let's go[do GlobalsVar.Fight_Zone._init_fight()] => END!
 
 => END
 ~ mouseflee

@@ -21,6 +21,8 @@ func update_data() -> void:
 	var custom_Tile: CustomTile = Util.data_to_resource(GlobalsVar.current_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA])
 	for child in %"fighter resources".get_children():
 		child.queue_free()
+	if custom_Tile == null:
+		return
 	
 	if custom_Tile.Fighter_Resource != [] or custom_Tile.Fighter_Resource != null:
 		for fighter : FighterResource in custom_Tile.Fighter_Resource:

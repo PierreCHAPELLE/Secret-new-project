@@ -12,6 +12,8 @@ var BALLON = preload("res://addons/example_balloon.tscn")
 # Initialise les connexions de signaux, notamment pour détecter lorsqu'une tile a été mise à jour
 func _ready() -> void:
 	SignalBus.Tile_has_been_updated.connect(_tile_has_been_updated)
+	SignalBus.Launch_EndFight_Dialogue.connect(_on_dialog_called)
+	SignalBus.Dialogue_ended.connect(Dialogue_Ended)
 	return
 
 ## Fonction déclenchée quand une tile est mise à jour :
@@ -87,3 +89,8 @@ func _on_dialog_called(DialogRes : DialogueResource, DialogStart : String):
 	%Ballon_Holder.add_child(Ballon)
 	Ballon.start(DialogRes, DialogStart)
 	return
+
+
+func Dialogue_Ended():
+	if GlobalsVar.fight_is_running == false:
+		unselect_tile()

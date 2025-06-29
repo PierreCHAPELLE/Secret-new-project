@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://iut5lluqqwvy"
+path="res://.godot/imported/Mouse_End_FIGHT.dialogue-2c42cddd2f4f723241a3ec5d6be533ff.tres"
+
+[deps]
+
+source_file="res://DATA/Dialog_Resource/Mouse_End_FIGHT.dialogue"
+dest_files=["res://.godot/imported/Mouse_End_FIGHT.dialogue-2c42cddd2f4f723241a3ec5d6be533ff.tres"]
+
+[params]
+
+defaults=true

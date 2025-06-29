@@ -67,9 +67,11 @@ func return_tile(mous_pos : Vector2, concerned_layer: TileMapLayer)->void:
 
 
 # Intercepte l'entrée utilisateur :
-# - Si l’utilisateur clique (et qu’aucun dialogue n’est en cours), tente de retourner la tile sous la souris dans le layer Stuff
+# - Si l’utilisateur clique (et qu’aucun dialogue n’est en cours, ou fight), tente de retourner la tile sous la souris dans le layer Stuff
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Click") and GlobalsVar.dialog_is_running == false:
+	if GlobalsVar.fight_is_running == true or GlobalsVar.dialog_is_running == true:
+		return
+	if Input.is_action_just_pressed("Click") :
 		return_tile(get_global_mouse_position(), stuff)
 	pass
 

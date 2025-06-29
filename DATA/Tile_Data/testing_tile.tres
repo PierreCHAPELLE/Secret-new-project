@@ -1,17 +1,16 @@
 [gd_resource type="Resource" script_class="CustomTile" load_steps=8 format=3 uid="uid://cofyb3pl4pc0t"]
 
 [ext_resource type="Resource" uid="uid://jsnmyyye8qg2" path="res://DATA/Dialog_Resource/Testing.dialogue" id="1_s6lk4"]
-[ext_resource type="Script" uid="uid://b4ejvb3mjkvis" path="res://SCRIPTS/Custom_Resource/FighterResource.gd" id="2_i5d1v"]
-[ext_resource type="Resource" uid="uid://dtnps66of4fye" path="res://DATA/Fighter_Resource/test/test1.tres" id="3_867wp"]
-[ext_resource type="Resource" uid="uid://slxqhcp7nxko" path="res://DATA/Fighter_Resource/test/test2.tres" id="4_mnowk"]
+[ext_resource type="Script" uid="uid://bkuo5elxm6psy" path="res://SCRIPTS/Custom_Resource/CurrentFighterResource.gd" id="2_v7bpr"]
+[ext_resource type="Resource" uid="uid://dyiebn1dvbbvo" path="res://DATA/Fighter_Resource/test/new_test1.tres" id="3_s6lk4"]
+[ext_resource type="Resource" uid="uid://djs4uxk5dtfb6" path="res://DATA/Fighter_Resource/test/new_test2.tres" id="4_867wp"]
 [ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="4_s6lk4"]
-[ext_resource type="Resource" uid="uid://cllcijc8chdi8" path="res://DATA/Fighter_Resource/test/test3.tres" id="5_tmvrj"]
-[ext_resource type="Resource" uid="uid://jnwh02qi5cxn" path="res://DATA/Fighter_Resource/test/test4.tres" id="6_t1ipp"]
+[ext_resource type="Resource" uid="uid://nwsvr4xpewcl" path="res://DATA/Fighter_Resource/test/new_test3.tres" id="5_mnowk"]
+[ext_resource type="Resource" uid="uid://d2eukswrd4bqr" path="res://DATA/Fighter_Resource/test/new_test4.tres" id="6_tmvrj"]
 
 [resource]
 script = ExtResource("4_s6lk4")
 Title = "test"
 Dialog = ExtResource("1_s6lk4")
-Fighter_Resource = Array[ExtResource("2_i5d1v")]([ExtResource("3_867wp"), ExtResource("4_mnowk"), ExtResource("5_tmvrj"), ExtResource("6_t1ipp")])
-SimpleLine = Array[String]([])
+Fighter_Resource = Array[ExtResource("2_v7bpr")]([ExtResource("3_s6lk4"), ExtResource("4_867wp"), ExtResource("5_mnowk"), ExtResource("6_tmvrj")])
 metadata/_custom_type_script = "uid://didhnqpcbw0vx"

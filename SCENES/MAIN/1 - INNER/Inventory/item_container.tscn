@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://v52yts8bhqal"]
+
+[ext_resource type="Texture2D" uid="uid://lg22ycu1wujk" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/item.png" id="1_1arl6"]
+[ext_resource type="Script" uid="uid://xqkafb8764q5" path="res://SCENES/MAIN/1 - INNER/Inventory/item_container.gd" id="2_c6l0q"]
+[ext_resource type="Texture2D" uid="uid://knxnqtxbnkmw" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Item_Outline.png" id="3_gpr4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mtbs"]
+atlas = ExtResource("1_1arl6")
+region = Rect2(93, 129, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1g8e"]
+texture = SubResource("AtlasTexture_6mtbs")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbix0"]
+atlas = ExtResource("3_gpr4f")
+region = Rect2(18, 180, 18, 18)
+
+[node name="Item_Container" type="PanelContainer"]
+custom_minimum_size = Vector2(42, 42)
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+script = ExtResource("2_c6l0q")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

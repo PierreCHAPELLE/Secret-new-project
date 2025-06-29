@@ -1,0 +1,20 @@
+~ start
+if GlobalsVar.Player_Is_Dead == true:
+	=> Lose
+else:
+	=> Win
+=> END!
+
+~ Win
+NARRATOR: ba voila,... [wait=1]c'est fait
+NARRATOR: tu te doute qu'il n'y a rien à [wave]looter[/wave] sur une souris écrasé
+	[do Util._delete_current_selected_tile()]
+=> END!
+
+
+
+
+~ Lose
+NARRATOR: Wow ce senario est impossible
+	[do Util.End_Game()]
+=> END!

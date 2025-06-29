@@ -1,8 +1,6 @@
 extends Resource
 class_name FighterResource
 
-enum  ATTACK_TYPE{CLOSE, RANGE, HEAL, MAGIC}
-enum  BONUS{ARMOR, VENOM, LIFE_STEAL, ZEUB}
 
 
 @export var visual : Texture2D
@@ -12,7 +10,8 @@ enum  BONUS{ARMOR, VENOM, LIFE_STEAL, ZEUB}
 
 @export var ATK : int
 
-@export var attack_type : ATTACK_TYPE
+@export var attack_type : GlobalsVar.ATTACK_TYPE
 
 
-@export var bonus_type : Array[BONUS]
+@export var bonus_type : Array[GlobalsVar.BONUS]
+@export var item_wore : Array[ItemResource]

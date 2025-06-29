@@ -1,0 +1,237 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyvxfv1121nb8"]
+
+[ext_resource type="Script" uid="uid://dgssft0elivru" path="res://SCENES/MAIN/1 - INNER/Inventory/inventory.gd" id="1_36tdi"]
+[ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="2_wcbdy"]
+[ext_resource type="Texture2D" uid="uid://knxnqtxbnkmw" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Item_Outline.png" id="3_k1g8e"]
+[ext_resource type="PackedScene" uid="uid://v52yts8bhqal" path="res://SCENES/MAIN/1 - INNER/Inventory/item_container.tscn" id="3_p6dki"]
+[ext_resource type="Texture2D" uid="uid://lg22ycu1wujk" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/item.png" id="3_wcbdy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3aaox"]
+texture = ExtResource("2_wcbdy")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+expand_margin_left = 24.0
+expand_margin_top = 40.0
+expand_margin_right = 24.0
+expand_margin_bottom = 24.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(36, 480, 188, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mtbs"]
+atlas = ExtResource("3_wcbdy")
+region = Rect2(93, 129, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1g8e"]
+texture = SubResource("AtlasTexture_6mtbs")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbix0"]
+atlas = ExtResource("3_k1g8e")
+region = Rect2(18, 180, 18, 18)
+
+[sub_resource type="Animation" id="Animation_36tdi"]
+resource_name = "OPEN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 10.1965),
+"update": 0,
+"values": [0.01, 0.7]
+}
+
+[sub_resource type="Animation" id="Animation_wcbdy"]
+resource_name = "CLOSE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 12.996),
+"update": 0,
+"values": [0.7, 0.01]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1g8e"]
+_data = {
+&"CLOSE": SubResource("Animation_wcbdy"),
+&"OPEN": SubResource("Animation_36tdi")
+}
+
+[node name="Inventory" type="VBoxContainer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.01
+theme_override_constants/separation = 2
+script = ExtResource("1_36tdi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Stuff "
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_3aaox")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="Item_Container" parent="PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("3_p6dki")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer3"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer4"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer5"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer6" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer6"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer7" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer7"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer8" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer8"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer9" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer9"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer10" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer10"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer11" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer11"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="PanelContainer12" type="PanelContainer" parent="PanelContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/ScrollContainer/GridContainer/PanelContainer12"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lbix0")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_k1g8e")
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -16,6 +16,10 @@ class_name Fighter_Container
 @export var magic_icon1 : Texture2D
 @export var magic_icon2 : Texture2D
 
+@export var dead : Texture2D
+
+
+
 @onready var name_data: Label = %Name_Data
 @onready var hp_data: Label = %HP_data
 @onready var atk_data: Label = %ATK_data
@@ -23,33 +27,43 @@ class_name Fighter_Container
 @onready var atk_1: TextureRect = %ATK1
 @onready var atk_2: TextureRect = %ATK2
 @onready var skin: TextureRect = %Skin
+@onready var hp_max_data: Label = %HP_MAX_data
 
 
 func _ready() -> void:
 	return
 
-func init(fighter_resource : FighterResource):
-	duplicate_template(fighter_resource)
-	name_data.text = fighter_resource.name
-	hp_data.text = str(fighter_resource.HP)
-	atk_data.text = str(fighter_resource.ATK)
-	skin.texture = fighter_resource.visual
-	Define_range(fighter_resource.attack_type)
+func init(fighter_resource : CurrentFighterResource):
+	Fighter_Current_Stat = duplicate_template(fighter_resource)
+	Update_DATA()
+
+
+func Update_DATA():
+	name_data.text = Fighter_Current_Stat.name
+	hp_data.text = str(Fighter_Current_Stat.HP)
+	hp_max_data.text = "/"+ str(Fighter_Current_Stat.MAX_HP)
+	atk_data.text = str(Fighter_Current_Stat.ATK)
+	if Fighter_Current_Stat.HP == 0:
+		skin.texture = dead
+	else:
+		skin.texture = Fighter_Current_Stat.visual
+	
+	Define_range(Fighter_Current_Stat.attack_type)
 	if get_parent() is not Ally_Squad_ZONE:
 		%Boutton.set_visible(false)
 
 func Define_range(attack_type : int):
 	match  attack_type:
-		FighterResource.ATTACK_TYPE.CLOSE:
+		GlobalsVar.ATTACK_TYPE.CLOSE:
 			atk_1.texture = close_icon1
 			atk_2.texture = close_icon2
-		FighterResource.ATTACK_TYPE.RANGE:
+		GlobalsVar.ATTACK_TYPE.RANGE:
 			atk_1.texture = range_icon1
 			atk_2.texture = range_icon2
-		FighterResource.ATTACK_TYPE.HEAL:
+		GlobalsVar.ATTACK_TYPE.HEAL:
 			atk_1.texture = heal_icon1
 			atk_2.texture = heal_icon2
-		FighterResource.ATTACK_TYPE.MAGIC:
+		GlobalsVar.ATTACK_TYPE.MAGIC:
 			atk_1.texture = magic_icon1
 			atk_2.texture = magic_icon2
 
@@ -66,16 +80,15 @@ func _on_down_pressed() -> void:
 	pass
 
 
-func duplicate_template(fighter_resource : FighterResource):
-	var current_resource = CurrentFighterResource.new()
-	current_resource.visual = fighter_resource.visual
-	current_resource.name = fighter_resource.name
-	current_resource.ATK = fighter_resource.ATK
-	current_resource.attack_type = fighter_resource.attack_type
-	current_resource.bonus_type = fighter_resource.bonus_type
-	current_resource.HP = fighter_resource.HP
-	
-	current_resource.MAX_HP = fighter_resource.HP
-	
-	Fighter_Current_Stat = current_resource
-	pass
+func duplicate_template(fighter_resource : CurrentFighterResource)->CurrentFighterResource:
+	var current_resource = fighter_resource.duplicate()
+	#var current_resource = CurrentFighterResource.new()
+	#current_resource.visual = fighter_resource.visual
+	#current_resource.name = fighter_resource.name
+	#current_resource.ATK = fighter_resource.ATK
+	#current_resource.attack_type = fighter_resource.attack_type
+	#current_resource.bonus_type = fighter_resource.bonus_type
+	#current_resource.item_wore = fighter_resource.item_wore
+	#current_resource.HP = fighter_resource.HP
+	#current_resource.MAX_HP = fighter_resource.HP
+	return current_resource

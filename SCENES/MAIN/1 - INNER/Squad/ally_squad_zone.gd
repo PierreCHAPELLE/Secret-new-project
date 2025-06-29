@@ -9,6 +9,7 @@ class_name Ally_Squad_ZONE
 func _ready() -> void:
 	Generated_Displayed_Fighter(Hero_DATA)
 	SignalBus.get_new_fighter.connect(_get_new_fighter)
+	Util.Ally_Squad = self
 	pass
 
 

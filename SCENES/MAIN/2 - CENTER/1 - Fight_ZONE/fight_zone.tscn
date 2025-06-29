@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbiq60fq5wx"]
+[gd_scene load_steps=20 format=3 uid="uid://cbiq60fq5wx"]
 
 [ext_resource type="Script" uid="uid://dl3genud7au2d" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fight_ZONE.gd" id="1_mxm40"]
 [ext_resource type="Script" uid="uid://cfxa54w24myu0" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/states_machineFight.gd" id="2_n8o8w"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cf2230hqk3kqc" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_round.gd" id="7_tx0i4"]
 [ext_resource type="Script" uid="uid://cihlldlruqiex" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/States_MachinesFight/States/end_fight.gd" id="8_ufjjl"]
 [ext_resource type="Texture2D" uid="uid://dmdb8i0nk5agx" path="res://ASSETS/VISUAL/UI-visual/Fight_Selector.png" id="13_t0g6e"]
+[ext_resource type="Script" uid="uid://yubwl8x2ajqv" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/Fight_curseur.gd" id="14_6qr6t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsxww"]
 bg_color = Color(0, 0, 0, 1)
@@ -70,7 +71,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.5
 script = ExtResource("1_mxm40")
-Turn_Timer = NodePath("Turn_Timer")
+Turn_Timer = NodePath("StatesMachineFIGHT/Start_TURN/Turn_Timer")
 progress_bar = NodePath("VBoxContainer/MarginContainer/HBoxContainer/ProgressBar")
 allies_pool = NodePath("VBoxContainer/HBoxContainer/Allies/MarginContainer/Allies_row_y/Allies_Pool")
 enemies_pool = NodePath("VBoxContainer/HBoxContainer/Enemies/MarginContainer_meetingpoint/Enemies_row_y/Enemies_Pool")
@@ -93,11 +94,6 @@ fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
 
-[node name="Init_Fight_Timer" type="Timer" parent="StatesMachineFIGHT/Init_FIGHT"]
-unique_name_in_owner = true
-wait_time = 0.5
-one_shot = true
-
 [node name="Start_ROUND" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("fight_zone", "entity")]
 unique_name_in_owner = true
 script = ExtResource("4_6qr6t")
@@ -111,6 +107,11 @@ script = ExtResource("5_jjf73")
 fight_zone = NodePath("../..")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://ixkr78msrlfh"
+
+[node name="Turn_Timer" type="Timer" parent="StatesMachineFIGHT/Start_TURN"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
 
 [node name="Do_TURN" type="Node" parent="StatesMachineFIGHT" node_paths=PackedStringArray("fight_zone", "entity")]
 unique_name_in_owner = true
@@ -143,11 +144,6 @@ metadata/_custom_type_script = "uid://ixkr78msrlfh"
 [node name="Placement Manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_t0g6e")
-
-[node name="Turn_Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 2.0
-one_shot = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -214,6 +210,7 @@ visible = false
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("13_t0g6e")
+script = ExtResource("14_6qr6t")
 
 [node name="Enemies" type="Control" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -249,6 +246,8 @@ texture_filter = 1
 position = Vector2(-4, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("13_t0g6e")
+script = ExtResource("14_6qr6t")
+Alignement = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -257,5 +256,5 @@ libraries = {
 }
 
 [connection signal="start_fight" from="." to="StatesMachineFIGHT/Await_FIGHT" method="_on_fight_zone_start_fight"]
-[connection signal="timeout" from="StatesMachineFIGHT/Init_FIGHT/Init_Fight_Timer" to="StatesMachineFIGHT/Init_FIGHT" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StatesMachineFIGHT/Init_FIGHT" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StatesMachineFIGHT/End_FIGHT" method="_on_animation_player_animation_finished"]

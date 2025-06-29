@@ -1,13 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckxaf4t7cong3"]
+[gd_scene load_steps=22 format=3 uid="uid://ckxaf4t7cong3"]
 
 [ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://SCENES/MAIN/MAIN.gd" id="1_rf5wo"]
 [ext_resource type="Script" uid="uid://bs8ek84fttlnv" path="res://SCENES/MAIN/1 - INNER/INNER_UI.gd" id="2_85okl"]
 [ext_resource type="Shader" uid="uid://cntg1188t2uco" path="res://ASSETS/RESOURCE/Shader/MAIN.gdshader" id="3_bhtte"]
 [ext_resource type="Script" uid="uid://n2dhucmbp40m" path="res://SCENES/MAIN/2 - CENTER/CENTER_UI.gd" id="3_fw155"]
 [ext_resource type="Script" uid="uid://dwlmi13qtluvj" path="res://SCENES/MAIN/1 - INNER/Squad/ally_squad_zone.gd" id="3_s6idh"]
-[ext_resource type="Resource" uid="uid://b4ocixdiev1r5" path="res://DATA/Fighter_Resource/Player.tres" id="4_cjseh"]
 [ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="4_dveii"]
+[ext_resource type="Resource" uid="uid://5ptnkkhyt0xn" path="res://DATA/Fighter_Resource/Player_FighterResource.tres" id="4_vhmgw"]
 [ext_resource type="Texture2D" uid="uid://dfelogv00rxvb" path="res://ASSETS/RESOURCE/Palet/InPalette.png" id="5_dveii"]
+[ext_resource type="PackedScene" uid="uid://dyvxfv1121nb8" path="res://SCENES/MAIN/1 - INNER/Inventory/inventory.tscn" id="5_vhmgw"]
 [ext_resource type="Script" uid="uid://y2g83e71txtg" path="res://SCENES/MAIN/2 - CENTER/3 -Action_ZONE/ACTION_UI.gd" id="6_85okl"]
 [ext_resource type="PackedScene" uid="uid://cbiq60fq5wx" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/fight_zone.tscn" id="6_cjseh"]
 [ext_resource type="Texture2D" uid="uid://snaj2hci76ah" path="res://ASSETS/RESOURCE/Palet/OutPalette.png" id="6_xxxxf"]
@@ -16,6 +17,8 @@
 [ext_resource type="Script" uid="uid://bvv20sfbg2h2p" path="res://SCENES/MAIN/3 - OUTER/OUTER_UI.gd" id="9_gvjxi"]
 [ext_resource type="PackedScene" uid="uid://be1xeuf2rhbvc" path="res://SCENES/World/MAPS/Begining.tscn" id="11_s6idh"]
 [ext_resource type="Script" uid="uid://c281dmked4jlm" path="res://SCENES/MAIN/3 - OUTER/EnemySquad_ZONE/enemy_squad_zone.gd" id="15_s6idh"]
+[ext_resource type="PackedScene" uid="uid://bsj5088r1d3n5" path="res://SCENES/Debug/debug_window.tscn" id="17_p2nk2"]
+[ext_resource type="Script" uid="uid://s60c1xndgifm" path="res://SCENES/MAIN/ENDING_SCREEN.gd" id="18_id6yc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxxxf"]
 texture = ExtResource("4_dveii")
@@ -34,60 +37,6 @@ shader_parameter/input_palette_texture = ExtResource("5_dveii")
 shader_parameter/output_palette_texture = ExtResource("6_xxxxf")
 shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
-[sub_resource type="Animation" id="Animation_id6yc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/CENTER_UI/Fight_Zone:size_flags_stretch_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
-
-[sub_resource type="Animation" id="Animation_p2nk2"]
-resource_name = "RESET_fight_zone"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/CENTER_UI/Fight_Zone:size_flags_stretch_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
-
-[sub_resource type="Animation" id="Animation_cjseh"]
-resource_name = "Start_fight_mode"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/CENTER_UI/Fight_Zone:size_flags_stretch_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 2),
-"update": 0,
-"values": [0.5, 3.5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhmgw"]
-_data = {
-&"RESET": SubResource("Animation_id6yc"),
-&"RESET_fight_zone": SubResource("Animation_p2nk2"),
-&"Start_fight_mode": SubResource("Animation_cjseh")
-}
 
 [node name="Word" type="Control"]
 texture_filter = 1
@@ -130,7 +79,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_s6idh")
-Hero_DATA = ExtResource("4_cjseh")
+Hero_DATA = ExtResource("4_vhmgw")
+
+[node name="Inventory" parent="HBoxContainer/INNER_UI/VBoxContainer" instance=ExtResource("5_vhmgw")]
+layout_mode = 2
 
 [node name="CENTER_UI" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -141,7 +93,6 @@ script = ExtResource("3_fw155")
 
 [node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("allies_Squad", "enemies_Squad", "ready_button") instance=ExtResource("6_cjseh")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.5
 allies_Squad = NodePath("../../INNER_UI/VBoxContainer/ScrollContainer/AllySquad_ZONE")
 enemies_Squad = NodePath("../../OUTER_UI/VBoxContainer/ScrollContainer/EnemySquad_ZONE")
 ready_button = NodePath("../../INNER_UI/VBoxContainer/ready")
@@ -166,7 +117,7 @@ disable_3d = true
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(2, 2)
+size = Vector2i(537, 257)
 render_target_update_mode = 4
 
 [node name="World" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer/SubViewport" instance=ExtResource("11_s6idh")]
@@ -228,9 +179,55 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("15_s6idh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_vhmgw")
-}
+[node name="Window" type="Window" parent="."]
+mode = 1
+position = Vector2i(0, 36)
+visible = false
+
+[node name="Debug_window" parent="Window" instance=ExtResource("17_p2nk2")]
+
+[node name="ENDING_SCREEN" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("18_id6yc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ENDING_SCREEN"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="ENDING_SCREEN/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ENDING_SCREEN/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+text = "C'est perdu mon bro"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="ENDING_SCREEN/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 48
+text = "Restart"
+
+[node name="Control2" type="Control" parent="ENDING_SCREEN/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="pressed" from="HBoxContainer/INNER_UI/VBoxContainer/ready" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_ready_pressed"]
+[connection signal="pressed" from="ENDING_SCREEN/VBoxContainer/Button" to="ENDING_SCREEN" method="_on_button_pressed"]

@@ -16,12 +16,16 @@ func Exit():
 func Update(delta : float):
 	super(delta)
 	
-	if (fight_zone.allies_pool.get_children().size() == 0 or
-	 fight_zone.allies_pool.get_children().size() ==0):
+	if FightManager.is_there_alive_fighter() == FightManager.Ally_Pool:
 		Transitioned.emit(self,"End_Fight")
-	elif round_ready == true:
+	elif FightManager.is_there_alive_fighter() == FightManager.Enemy_Pool:
+		GlobalsVar.Player_Is_Dead = true
+		Transitioned.emit(self,"End_Fight")
+	else:
+		pass
+	if round_ready == true:
 		Transitioned.emit(self,"Start_ROUND")
-	
+		
 	pass
 
 func Physics_Update(delta : float):

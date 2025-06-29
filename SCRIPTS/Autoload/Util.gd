@@ -1,6 +1,8 @@
 extends Node
 
+var Game : GAME
 var maps :Maps
+var Ally_Squad : Ally_Squad_ZONE
 
 
 func init_click_signal(map : Maps)->void:
@@ -34,7 +36,7 @@ func Get_Fighter_from_Dialog(tile_removed : bool=false):
 	var customTile : CustomTile = Util.data_to_resource(current_data)
 	SignalBus.get_new_fighter.emit(customTile.Fighter_Resource)
 	if tile_removed == true:
-		maps._delete_current_selected_tile()
+		_delete_current_selected_tile()
 		
 	pass
 
@@ -46,3 +48,22 @@ func find_fighter_from_squad(fighterC : Fighter_Container, pool : Pool)-> Fighte
 		if fighterC.Fighter_Current_Stat == fighter.Fighter_Current_Stat:
 			return fighter
 	return null
+
+func Update_Squad(FR: CurrentFighterResource):
+	for child : Fighter_Container  in Ally_Squad.get_children():
+		if child.Fighter_Current_Stat == FR:
+			child.Update_DATA()
+			break
+	
+	push_error()
+
+
+
+
+func _delete_current_selected_tile():
+	maps._delete_current_selected_tile()
+	pass
+
+
+func End_Game():
+	Game.End_Game()
