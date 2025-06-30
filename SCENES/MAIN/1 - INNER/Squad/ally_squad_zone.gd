@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 
-func _get_new_fighter(list_of_acquired_fighter : Array[FighterResource]):
+func _get_new_fighter(list_of_acquired_fighter : Array[CurrentFighterResource]):
 	for fighter in list_of_acquired_fighter:
 		Generated_Displayed_Fighter(fighter)
 		pass

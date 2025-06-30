@@ -10,7 +10,7 @@ region = Rect2(252, 126, 18, 18)
 
 [resource]
 script = ExtResource("2_bydks")
-MAX_HP = 0
+MAX_HP = 5
 visual = SubResource("AtlasTexture_nrqld")
 name = "Petit Con"
 HP = 5

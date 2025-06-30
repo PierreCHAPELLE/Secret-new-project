@@ -90,5 +90,5 @@ func duplicate_template(fighter_resource : CurrentFighterResource)->CurrentFight
 	#current_resource.bonus_type = fighter_resource.bonus_type
 	#current_resource.item_wore = fighter_resource.item_wore
 	#current_resource.HP = fighter_resource.HP
-	#current_resource.MAX_HP = fighter_resource.HP
+	current_resource.MAX_HP = fighter_resource.HP
 	return current_resource

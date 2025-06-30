@@ -114,10 +114,10 @@ func is_there_alive_fighter() -> Pool:
 		if child.alive == true:
 			PoolE = true
 	
-	if PoolA == false :
+	if PoolA == true :
 		return Ally_Pool
 	
-	if PoolE == false :
+	if PoolE == true :
 		return Enemy_Pool
 	
 	return null

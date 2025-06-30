@@ -55,6 +55,8 @@ func Update_dead_Ally()-> void:
 
 func Cleanse_Pool()-> void:
 	for child : Fighter in FightManager.Ally_Pool.get_children():
-		child.queue_free()
+		if child.alive == false:
+			child.queue_free()
 	for child : Fighter in FightManager.Enemy_Pool.get_children():
-		child.queue_free()
+		if child.alive == false:
+			child.queue_free()
