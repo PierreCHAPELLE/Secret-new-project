@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c28dmoutvwj8m"
+path="res://.godot/imported/Default_End_Fight.dialogue-9a8c15c5e0cb7806cc54d4114b061815.tres"
+
+[deps]
+
+source_file="res://DATA/Dialog_Resource/Default_End_Fight.dialogue"
+dest_files=["res://.godot/imported/Default_End_Fight.dialogue-9a8c15c5e0cb7806cc54d4114b061815.tres"]
+
+[params]
+
+defaults=true

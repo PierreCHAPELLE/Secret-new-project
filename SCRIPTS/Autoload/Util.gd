@@ -54,8 +54,7 @@ func Update_Squad(FR: CurrentFighterResource):
 		if child.Fighter_Current_Stat == FR:
 			child.Update_DATA()
 			break
-	
-	push_error()
+
 
 
 
@@ -67,3 +66,7 @@ func _delete_current_selected_tile():
 
 func End_Game():
 	Game.End_Game()
+
+
+func get_current_custome_tile() -> CustomTile:
+	return data_to_resource(GlobalsVar.current_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA])

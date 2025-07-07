@@ -2,9 +2,11 @@ extends StateFight
 class_name StateFightEnd_ROUND
 
 var round_ready :=false
+
 func Enter():
 	fight_zone.ready_button.show()
 	super()
+	deal_end_fight()
 	pass
 
 func Exit():
@@ -15,14 +17,6 @@ func Exit():
 
 func Update(delta : float):
 	super(delta)
-	
-	if FightManager.is_there_alive_fighter() == FightManager.Ally_Pool:
-		Transitioned.emit(self,"End_Fight")
-	elif FightManager.is_there_alive_fighter() == FightManager.Enemy_Pool:
-		GlobalsVar.Player_Is_Dead = true
-		Transitioned.emit(self,"End_Fight")
-	else:
-		pass
 	if round_ready == true:
 		Transitioned.emit(self,"Start_ROUND")
 		
@@ -31,3 +25,14 @@ func Update(delta : float):
 func Physics_Update(delta : float):
 	super(delta)
 	pass
+
+
+func deal_end_fight():
+	if FightManager.is_there_alive_fighter() == FightManager.Ally_Pool:
+		Transitioned.emit(self,"End_Fight")
+		GlobalsVar.Player_Is_Dead = true
+	if FightManager.is_there_alive_fighter() == FightManager.Enemy_Pool:
+		await get_tree().process_frame
+		Transitioned.emit(self,"End_Fight")
+	else:
+		pass

@@ -1,0 +1,19 @@
+~ start
+if GlobalsVar.Player_Is_Dead == true:
+	=> Lose
+else:
+	=> Win
+=> END!
+
+~ Win
+NARRATOR: vous avez gagné x gold
+	[do Util._delete_current_selected_tile()]
+=> END!
+
+
+
+
+~ Lose
+NARRATOR: c'est la fin pour toi
+	[do Util.End_Game()]
+=> END!

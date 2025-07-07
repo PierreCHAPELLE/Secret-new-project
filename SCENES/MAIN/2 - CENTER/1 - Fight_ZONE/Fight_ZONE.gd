@@ -4,6 +4,10 @@ class_name Fight_ZONE
 
 signal start_fight()
 
+
+
+
+
 @export var Turn_Timer : Timer
 @export var progress_bar: ProgressBar 
 

@@ -30,12 +30,16 @@ class_name Fighter_Container
 @onready var hp_max_data: Label = %HP_MAX_data
 
 
+
+
 func _ready() -> void:
 	return
 
 func init(fighter_resource : CurrentFighterResource):
 	Fighter_Current_Stat = duplicate_template(fighter_resource)
 	Update_DATA()
+
+
 
 
 func Update_DATA():

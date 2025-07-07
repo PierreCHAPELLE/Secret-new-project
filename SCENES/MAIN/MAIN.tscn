@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckxaf4t7cong3"]
+[gd_scene load_steps=29 format=3 uid="uid://ckxaf4t7cong3"]
 
 [ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://SCENES/MAIN/MAIN.gd" id="1_rf5wo"]
 [ext_resource type="Script" uid="uid://bs8ek84fttlnv" path="res://SCENES/MAIN/1 - INNER/INNER_UI.gd" id="2_85okl"]
@@ -6,11 +6,13 @@
 [ext_resource type="Script" uid="uid://n2dhucmbp40m" path="res://SCENES/MAIN/2 - CENTER/CENTER_UI.gd" id="3_fw155"]
 [ext_resource type="Script" uid="uid://dwlmi13qtluvj" path="res://SCENES/MAIN/1 - INNER/Squad/ally_squad_zone.gd" id="3_s6idh"]
 [ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="4_dveii"]
-[ext_resource type="Resource" uid="uid://5ptnkkhyt0xn" path="res://DATA/Fighter_Resource/Player_FighterResource.tres" id="4_vhmgw"]
+[ext_resource type="Script" uid="uid://bn125d7k68876" path="res://SCRIPTS/Custom_Resource/ItemResource.gd" id="4_hxj2i"]
 [ext_resource type="Texture2D" uid="uid://dfelogv00rxvb" path="res://ASSETS/RESOURCE/Palet/InPalette.png" id="5_dveii"]
+[ext_resource type="Script" uid="uid://ch3d4o1n3313i" path="res://SCRIPTS/Custom_Resource/Player_Data.gd" id="5_varbs"]
 [ext_resource type="PackedScene" uid="uid://dyvxfv1121nb8" path="res://SCENES/MAIN/1 - INNER/Inventory/inventory.tscn" id="5_vhmgw"]
 [ext_resource type="Script" uid="uid://y2g83e71txtg" path="res://SCENES/MAIN/2 - CENTER/3 -Action_ZONE/ACTION_UI.gd" id="6_85okl"]
 [ext_resource type="PackedScene" uid="uid://cbiq60fq5wx" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/fight_zone.tscn" id="6_cjseh"]
+[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="6_varbs"]
 [ext_resource type="Texture2D" uid="uid://snaj2hci76ah" path="res://ASSETS/RESOURCE/Palet/OutPalette.png" id="6_xxxxf"]
 [ext_resource type="Script" uid="uid://d4gyd1cosc7q4" path="res://SCENES/MAIN/2 - CENTER/3 -Action_ZONE/Selected_tile.gd" id="7_fw155"]
 [ext_resource type="Script" uid="uid://box27fmln326u" path="res://SCENES/MAIN/2 - CENTER/2 - World_ZONE/World_ZONE.gd" id="8_cjseh"]
@@ -19,6 +21,28 @@
 [ext_resource type="Script" uid="uid://c281dmked4jlm" path="res://SCENES/MAIN/3 - OUTER/EnemySquad_ZONE/enemy_squad_zone.gd" id="15_s6idh"]
 [ext_resource type="PackedScene" uid="uid://bsj5088r1d3n5" path="res://SCENES/Debug/debug_window.tscn" id="17_p2nk2"]
 [ext_resource type="Script" uid="uid://s60c1xndgifm" path="res://SCENES/MAIN/ENDING_SCREEN.gd" id="18_id6yc"]
+[ext_resource type="Script" uid="uid://xtfn7b5xgthq" path="res://SCENES/MAIN/3 - OUTER/expected_stuff.gd" id="18_lbix0"]
+[ext_resource type="Texture2D" uid="uid://dmvssq1psbumd" path="res://ASSETS/VISUAL/UI-visual/doted_line.png" id="19_hxj2i"]
+[ext_resource type="PackedScene" uid="uid://m731pv10h7ri" path="res://SCENES/UI/item_information.tscn" id="24_1w7uk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w7uk"]
+atlas = ExtResource("6_varbs")
+region = Rect2(126, 126, 18, 18)
+
+[sub_resource type="Resource" id="Resource_1w7uk"]
+script = ExtResource("5_varbs")
+level = 0
+Current_Exp = 0
+Exp_to_next_level = 10
+MAX_HP = 0
+visual = SubResource("AtlasTexture_1w7uk")
+name = "Player"
+HP = 10
+ATK = 2
+attack_type = 0
+bonus_type = Array[int]([])
+item_wore = Array[ExtResource("4_hxj2i")]([])
+metadata/_custom_type_script = "uid://ch3d4o1n3313i"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxxxf"]
 texture = ExtResource("4_dveii")
@@ -79,7 +103,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_s6idh")
-Hero_DATA = ExtResource("4_vhmgw")
+Hero_DATA = SubResource("Resource_1w7uk")
 
 [node name="Inventory" parent="HBoxContainer/INNER_UI/VBoxContainer" instance=ExtResource("5_vhmgw")]
 layout_mode = 2
@@ -94,7 +118,7 @@ script = ExtResource("3_fw155")
 [node name="Fight_Zone" parent="HBoxContainer/CENTER_UI" node_paths=PackedStringArray("allies_Squad", "enemies_Squad", "ready_button") instance=ExtResource("6_cjseh")]
 layout_mode = 2
 allies_Squad = NodePath("../../INNER_UI/VBoxContainer/ScrollContainer/AllySquad_ZONE")
-enemies_Squad = NodePath("../../OUTER_UI/VBoxContainer/ScrollContainer/EnemySquad_ZONE")
+enemies_Squad = NodePath("../../OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/EnemySquad_ZONE")
 ready_button = NodePath("../../INNER_UI/VBoxContainer/ready")
 
 [node name="World_Zone" type="PanelContainer" parent="HBoxContainer/CENTER_UI"]
@@ -173,11 +197,73 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="EnemySquad_ZONE" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EnemySquad_ZONE" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("15_s6idh")
+
+[node name="Expected_stuff" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("18_lbix0")
+
+[node name="EXP_Expected" type="HBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/EXP_Expected"]
+layout_mode = 2
+text = "EXP"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/EXP_Expected"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("19_hxj2i")
+stretch_mode = 1
+
+[node name="exp" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/EXP_Expected"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+
+[node name="Gold_Expected" type="HBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/Gold_Expected"]
+layout_mode = 2
+text = "Gold"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/Gold_Expected"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("19_hxj2i")
+stretch_mode = 1
+
+[node name="gold" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/Gold_Expected"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/VBoxContainer"]
+layout_mode = 2
+text = "loot:"
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
 
 [node name="Window" type="Window" parent="."]
 mode = 1
@@ -228,6 +314,25 @@ text = "Restart"
 [node name="Control2" type="Control" parent="ENDING_SCREEN/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 600
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 600
+theme_override_constants/margin_bottom = 200
+
+[node name="Item_Information" parent="CanvasLayer/MarginContainer" instance=ExtResource("24_1w7uk")]
+layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/INNER_UI/VBoxContainer/ready" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_ready_pressed"]
 [connection signal="pressed" from="ENDING_SCREEN/VBoxContainer/Button" to="ENDING_SCREEN" method="_on_button_pressed"]

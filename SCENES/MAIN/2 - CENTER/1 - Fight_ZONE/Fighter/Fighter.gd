@@ -49,7 +49,7 @@ func init(fighter_resource: CurrentFighterResource) -> void:
 		add_to_group("ALLIES")
 	else:
 		add_to_group("ENEMIES")
-		
+		sprite_2d.flip_h = true
 	pass
 
 
@@ -66,7 +66,7 @@ func Take_Dmg(attacker:Fighter):
 		#"je vais prendre :" + str(attacker.Calculate_damage()) + "damag"+ "\n\n"
 		#)
 	var dmg : int = attacker.Calculate_damage()
-	await comp_IndicatorSpawner.generate_hp_indicateur(dmg).finished
+	comp_IndicatorSpawner.generate_hp_indicateur(dmg).finished
 	Fighter_Current_Stat.HP -= dmg
 	Fighter_Current_Stat.HP = clamp(Fighter_Current_Stat.HP, 0, Fighter_Current_Stat.MAX_HP)
 	
@@ -127,6 +127,7 @@ func Do_Action():
 	else:
 		cible = FightManager.Define_First_Fighter_In_Pool(GlobalsVar.ALIGNEMENT.ALLY)
 	if cible == null:
+		Placed = true
 		return
 	
 	var destination = choose_destination(cible)

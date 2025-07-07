@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CustomTile" load_steps=8 format=3 uid="uid://cofyb3pl4pc0t"]
+[gd_resource type="Resource" script_class="CustomTile" load_steps=9 format=3 uid="uid://cofyb3pl4pc0t"]
 
 [ext_resource type="Resource" uid="uid://jsnmyyye8qg2" path="res://DATA/Dialog_Resource/Testing.dialogue" id="1_s6lk4"]
 [ext_resource type="Script" uid="uid://bkuo5elxm6psy" path="res://SCRIPTS/Custom_Resource/CurrentFighterResource.gd" id="2_v7bpr"]
@@ -7,10 +7,14 @@
 [ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="4_s6lk4"]
 [ext_resource type="Resource" uid="uid://nwsvr4xpewcl" path="res://DATA/Fighter_Resource/test/new_test3.tres" id="5_mnowk"]
 [ext_resource type="Resource" uid="uid://d2eukswrd4bqr" path="res://DATA/Fighter_Resource/test/new_test4.tres" id="6_tmvrj"]
+[ext_resource type="Script" uid="uid://bn125d7k68876" path="res://SCRIPTS/Custom_Resource/ItemResource.gd" id="7_867wp"]
 
 [resource]
 script = ExtResource("4_s6lk4")
 Title = "test"
 Dialog = ExtResource("1_s6lk4")
 Fighter_Resource = Array[ExtResource("2_v7bpr")]([ExtResource("3_s6lk4"), ExtResource("4_867wp"), ExtResource("5_mnowk"), ExtResource("6_tmvrj")])
+EXP_Expected = 0
+GOLD_Expected = 0
+ITEMS_Expected = Array[ExtResource("7_867wp")]([])
 metadata/_custom_type_script = "uid://didhnqpcbw0vx"

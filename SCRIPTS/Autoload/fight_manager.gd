@@ -1,6 +1,12 @@
 extends Node
 class_name Fight_Manager
 
+var EXP_Expected : int
+var GOLD_Expected : int
+var ITEMS_Expected : Array[ItemResource]
+
+
+
 
 var Cursor_A: Sprite2D
 var Cursor_E: Sprite2D
@@ -61,22 +67,6 @@ func Define_Selector_Placement(fighter : Fighter,FightSelector : Fighter_Cursor)
 	
 
 
-func Define_First_Fighter_In_Pool(Ali: GlobalsVar.ALIGNEMENT) -> Fighter:
-	var concerned_pool : Pool
-	var concerned_fighter : Fighter
-	 
-	if Ali == GlobalsVar.ALIGNEMENT.ALLY :
-		concerned_pool = Ally_Pool
-	else:
-		concerned_pool = Enemy_Pool
-	
-	
-	for child : Fighter in concerned_pool.get_children():
-		if child.alive == true:
-			concerned_fighter= child
-			return concerned_fighter
-	push_error()
-	return null
 
 
 
@@ -91,6 +81,23 @@ func init_round():
 	pass
 
 
+func Define_First_Fighter_In_Pool(Ali: GlobalsVar.ALIGNEMENT) -> Fighter:
+	var concerned_pool : Pool
+	var concerned_fighter : Fighter
+	 
+	if Ali == GlobalsVar.ALIGNEMENT.ALLY :
+		concerned_pool = Ally_Pool
+	else:
+		concerned_pool = Enemy_Pool
+	
+	
+	for child : Fighter in concerned_pool.get_children():
+		if child.alive == true:
+			return child
+		else :
+			child.Placed == true
+	
+	return null
 
 
 func do_turn():
@@ -114,10 +121,10 @@ func is_there_alive_fighter() -> Pool:
 		if child.alive == true:
 			PoolE = true
 	
-	if PoolA == true :
+	if PoolA == false :
 		return Ally_Pool
 	
-	if PoolE == true :
+	if PoolE == false :
 		return Enemy_Pool
 	
 	return null

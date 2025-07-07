@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="CustomTile" load_steps=5 format=3 uid="uid://bimoiqi7kicx8"]
+[gd_resource type="Resource" script_class="CustomTile" load_steps=6 format=3 uid="uid://bimoiqi7kicx8"]
 
 [ext_resource type="Resource" uid="uid://dsxrak077ungi" path="res://DATA/Dialog_Resource/Hero_Cat.dialogue" id="1_q5vr2"]
 [ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="1_t5pkv"]
 [ext_resource type="Script" uid="uid://bkuo5elxm6psy" path="res://SCRIPTS/Custom_Resource/CurrentFighterResource.gd" id="2_g0jdl"]
 [ext_resource type="Resource" uid="uid://7mdf5a3g0gdm" path="res://DATA/Fighter_Resource/Cat_FighterResource.tres" id="3_43pqo"]
+[ext_resource type="Script" uid="uid://bn125d7k68876" path="res://SCRIPTS/Custom_Resource/ItemResource.gd" id="4_43pqo"]
 
 [resource]
 script = ExtResource("1_t5pkv")
 Title = "Petit Con"
 Dialog = ExtResource("1_q5vr2")
 Fighter_Resource = Array[ExtResource("2_g0jdl")]([ExtResource("3_43pqo")])
+EXP_Expected = 0
+GOLD_Expected = 0
+ITEMS_Expected = Array[ExtResource("4_43pqo")]([])
 metadata/_custom_type_script = "uid://didhnqpcbw0vx"

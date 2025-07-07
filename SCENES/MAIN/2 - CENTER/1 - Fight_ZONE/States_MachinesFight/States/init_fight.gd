@@ -9,6 +9,15 @@ func Enter():
 	GlobalsVar.fight_is_running = true
 	FightManager.first_turn = true
 	
+	FightManager.EXP_Expected = Util.get_current_custome_tile().EXP_Expected
+	FightManager.GOLD_Expected =  Util.get_current_custome_tile().GOLD_Expected
+	FightManager.ITEMS_Expected =  Util.get_current_custome_tile().ITEMS_Expected
+	for fighter: CurrentFighterResource in Util.get_current_custome_tile().Fighter_Resource:
+		for item : ItemResource in fighter.item_wore:
+			FightManager.ITEMS_Expected.append(item)
+	
+	
+	
 	%AnimationPlayer.play("start_fight")
 	
 	pass

@@ -6,5 +6,5 @@ NARRATOR: voici votre chat. C'est un petit con principallement
 		do Util.Get_Fighter_from_Dialog(true)
 		NARRATOR: Super ! Ton chat a maintenant rejoint ton aventure. Fais bien attention à lui, j'espère qu'il sera à la hauteur.
 	- non il est bien à la maison ce con 
-		NARRATOR:Je comprends, il aurait été fâcheux qu'il lui arrive quelque chose.
+		NARRATOR: Je comprends, il aurait été fâcheux qu'il lui arrive quelque chose.
 => END

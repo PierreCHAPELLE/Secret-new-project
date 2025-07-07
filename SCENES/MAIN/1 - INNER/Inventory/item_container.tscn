@@ -21,6 +21,7 @@ atlas = ExtResource("3_gpr4f")
 region = Rect2(18, 180, 18, 18)
 
 [node name="Item_Container" type="PanelContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(42, 42)
 theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
 script = ExtResource("2_c6l0q")

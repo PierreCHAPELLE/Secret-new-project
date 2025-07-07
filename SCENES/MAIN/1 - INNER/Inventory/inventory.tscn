@@ -20,12 +20,12 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(36, 480, 188, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6mtbs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1g8e"]
 atlas = ExtResource("3_wcbdy")
 region = Rect2(93, 129, 12, 12)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1g8e"]
-texture = SubResource("AtlasTexture_6mtbs")
+texture = SubResource("AtlasTexture_k1g8e")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -85,10 +85,20 @@ size_flags_stretch_ratio = 0.01
 theme_override_constants/separation = 2
 script = ExtResource("1_36tdi")
 
-[node name="Button" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Stuff "
+
+[node name="Gold own" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Golds Owned:"
+horizontal_alignment = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -234,4 +244,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_k1g8e")
 }
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

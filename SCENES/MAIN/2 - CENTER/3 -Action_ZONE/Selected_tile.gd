@@ -87,7 +87,10 @@ func Update_visual(selected_coor :Vector2i, _selected_ALT_ID:int,tile_data:TileD
 func _on_dialog_called(DialogRes : DialogueResource, DialogStart : String):
 	var Ballon = BALLON.instantiate() as DialogueManagerExampleBalloon
 	%Ballon_Holder.add_child(Ballon)
-	Ballon.start(DialogRes, DialogStart)
+	if DialogRes == null:
+		Ballon.start(GlobalsVar.default_losing_dial, DialogStart)
+	else:
+		Ballon.start(DialogRes, DialogStart)
 	return
 
 

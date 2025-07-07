@@ -1,6 +1,9 @@
 @icon("uid://ceuhd5giof8ge")
 extends Squad_ZONE
 class_name Enemy_Squad_ZONE
+
+@onready var expected_stuff: VBoxContainer = %Expected_stuff
+
 func _ready() -> void:
 	SignalBus.get_new_fighter.connect(cleanse_bis)
 	SignalBus.Dialogue_ended.connect(cleanse)
@@ -20,6 +23,8 @@ func Generated_EnemySquad_Display(tile_data : CustomTile):
 	FightManager.list_of_outer_fighter = []
 	for child:Fighter_Container in get_children():
 		FightManager.list_of_outer_fighter.append(child.Fighter_Current_Stat)
+	
+	expected_stuff.show_expected_lot(tile_data)
 	return
 
 func cleanse_bis(_list_of_acquired_fighter):
@@ -32,3 +37,4 @@ func cleanse():
 	
 	for child in get_children():
 			child.queue_free()
+	expected_stuff.set_visible(false)
