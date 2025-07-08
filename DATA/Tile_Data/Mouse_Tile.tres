@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CustomTile" load_steps=7 format=3 uid="uid://bdud4iqwidbeb"]
+[gd_resource type="Resource" script_class="CustomTile" load_steps=8 format=3 uid="uid://bdud4iqwidbeb"]
 
 [ext_resource type="Resource" uid="uid://c08rjlcvax0p6" path="res://DATA/Dialog_Resource/Mouse.dialogue" id="1_w3sl5"]
 [ext_resource type="Resource" uid="uid://iut5lluqqwvy" path="res://DATA/Dialog_Resource/Mouse_End_FIGHT.dialogue" id="2_evcvi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bs86qnr6tuof4" path="res://DATA/Fighter_Resource/MOUS_FighterResource.tres" id="4_evcvi"]
 [ext_resource type="Script" uid="uid://didhnqpcbw0vx" path="res://SCRIPTS/Custom_Resource/CustomTile.gd" id="4_rjfrb"]
 [ext_resource type="Script" uid="uid://bn125d7k68876" path="res://SCRIPTS/Custom_Resource/ItemResource.gd" id="5_evcvi"]
+[ext_resource type="Resource" uid="uid://dekowxja80spb" path="res://DATA/Item_Resource/Sword.tres" id="6_rjfrb"]
 
 [resource]
 script = ExtResource("4_rjfrb")
@@ -13,7 +14,7 @@ Title = "souris souriante"
 Dialog = ExtResource("1_w3sl5")
 Fighter_Resource = Array[ExtResource("3_rckfi")]([ExtResource("4_evcvi")])
 End_Fight_Dialog = ExtResource("2_evcvi")
-EXP_Expected = 0
+EXP_Expected = 4
 GOLD_Expected = 0
-ITEMS_Expected = Array[ExtResource("5_evcvi")]([])
+ITEMS_Expected = Array[ExtResource("5_evcvi")]([ExtResource("6_rjfrb")])
 metadata/_custom_type_script = "uid://didhnqpcbw0vx"

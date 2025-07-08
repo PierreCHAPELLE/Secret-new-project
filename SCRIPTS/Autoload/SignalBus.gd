@@ -12,3 +12,12 @@ signal Dialogue_ended()
 signal fighter_order_has_been_changed()
 @warning_ignore("unused_signal")
 signal Launch_EndFight_Dialogue(dialogue, title)
+
+
+
+
+@warning_ignore("unused_signal")
+signal Show_Item_Detail(item : ItemResource)
+
+@warning_ignore("unused_signal")
+signal Hide_Item_Detail()

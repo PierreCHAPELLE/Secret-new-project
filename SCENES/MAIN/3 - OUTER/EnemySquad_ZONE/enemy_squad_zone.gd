@@ -36,5 +36,7 @@ func cleanse():
 		return
 	
 	for child in get_children():
+		if child is Fighter_Container:
 			child.queue_free()
+	expected_stuff.Cleanse()
 	expected_stuff.set_visible(false)

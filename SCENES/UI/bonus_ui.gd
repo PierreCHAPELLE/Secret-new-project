@@ -1,5 +1,5 @@
-extends VBoxContainer
-class_name Bonus_Displau
+extends Panel
+class_name Bonus_Display
 #enum  BONUS{ARMOR,
 	#VENOM,
 	#LIFE_STEAL,

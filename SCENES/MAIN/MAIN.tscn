@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckxaf4t7cong3"]
+[gd_scene load_steps=30 format=3 uid="uid://ckxaf4t7cong3"]
 
 [ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://SCENES/MAIN/MAIN.gd" id="1_rf5wo"]
 [ext_resource type="Script" uid="uid://bs8ek84fttlnv" path="res://SCENES/MAIN/1 - INNER/INNER_UI.gd" id="2_85okl"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://xtfn7b5xgthq" path="res://SCENES/MAIN/3 - OUTER/expected_stuff.gd" id="18_lbix0"]
 [ext_resource type="Texture2D" uid="uid://dmvssq1psbumd" path="res://ASSETS/VISUAL/UI-visual/doted_line.png" id="19_hxj2i"]
 [ext_resource type="PackedScene" uid="uid://m731pv10h7ri" path="res://SCENES/UI/item_information.tscn" id="24_1w7uk"]
+[ext_resource type="Script" uid="uid://i0y0grt846o0" path="res://SCENES/MAIN/canvas_layer.gd" id="24_mjd8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w7uk"]
 atlas = ExtResource("6_varbs")
@@ -215,6 +216,7 @@ layout_mode = 2
 script = ExtResource("18_lbix0")
 
 [node name="EXP_Expected" type="HBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/EXP_Expected"]
@@ -234,6 +236,7 @@ layout_mode = 2
 text = "500"
 
 [node name="Gold_Expected" type="HBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/Gold_Expected"]
@@ -252,14 +255,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "500"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+[node name="Loot_Expected" type="VBoxContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/VBoxContainer"]
+[node name="Label3" type="Label" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/Loot_Expected"]
 layout_mode = 2
 text = "loot:"
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/OUTER_UI/VBoxContainer/ScrollContainer/VBoxContainer/Expected_stuff/Loot_Expected"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -316,6 +321,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("24_mjd8i")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -332,6 +338,8 @@ theme_override_constants/margin_right = 600
 theme_override_constants/margin_bottom = 200
 
 [node name="Item_Information" parent="CanvasLayer/MarginContainer" instance=ExtResource("24_1w7uk")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/INNER_UI/VBoxContainer/ready" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_ready_pressed"]

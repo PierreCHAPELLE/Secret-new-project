@@ -16,6 +16,5 @@ func init(item: ItemResource)->void:
 	sprite.texture = item.visual
 	name_label.text = item.name
 	
-	
-	
-	
+	show()
+	pass

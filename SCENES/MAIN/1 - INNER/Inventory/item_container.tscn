@@ -26,7 +26,8 @@ custom_minimum_size = Vector2(42, 42)
 theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
 script = ExtResource("2_c6l0q")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 texture = SubResource("AtlasTexture_lbix0")
