@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 class_name Bonus_Display
 #enum  BONUS{ARMOR,
 	#VENOM,
