@@ -13,7 +13,7 @@ func Enter():
 	Update_dead_Ally()
 	Cleanse_Pool()
 	launch_EndFight_Dialogue(GlobalsVar.current_selected_tile[Maps.ENUM_SELECTED_TILE.TILEDATA])
-	
+	get_loot()
 	%AnimationPlayer.play("RESET")
 	pass
 
@@ -60,3 +60,18 @@ func Cleanse_Pool()-> void:
 	for child : Fighter in FightManager.Enemy_Pool.get_children():
 		if child.alive == false:
 			child.queue_free()
+
+
+
+
+
+
+
+
+
+
+func get_loot():
+	#SignalBus.Getting_EXP.emit(FightManager.EXP_Expected)
+	#GlobalsVar.Current_Gold += FightManager.GOLD_Expected
+	#GlobalsVar.Current_EXP FightManager.ITEMS_Expected
+	pass

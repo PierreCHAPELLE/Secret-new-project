@@ -8,4 +8,4 @@ class_name ItemResource
 @export var name : String
 @export_multiline var description : String
 
-@export var bonus_type : Array[GlobalsVar.BONUS]
+@export var List_of_Bonus : Array[GlobalsVar.BONUS]

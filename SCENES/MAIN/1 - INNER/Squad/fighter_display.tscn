@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ddgm8cwaxuv0d"]
+[gd_scene load_steps=46 format=3 uid="uid://ddgm8cwaxuv0d"]
 
 [ext_resource type="Texture2D" uid="uid://lg22ycu1wujk" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/item.png" id="1_5hs8a"]
 [ext_resource type="Script" uid="uid://b61lx5qk1g7ii" path="res://SCENES/MAIN/1 - INNER/Squad/fighter_container.gd" id="2_q6jwj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwexog6613pmr" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Fourniture_Outline.png" id="4_bcn6b"]
 [ext_resource type="Texture2D" uid="uid://knxnqtxbnkmw" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Item_Outline.png" id="5_rjw2t"]
 [ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="6_q6jwj"]
+[ext_resource type="Script" uid="uid://cocxpee1jd6px" path="res://SCENES/MAIN/1 - INNER/Squad/item_slot.gd" id="7_4twxn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvoqb"]
 texture = ExtResource("1_5hs8a")
@@ -295,26 +296,29 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer"]
+[node name="ItemSlot" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xipv1")
+script = ExtResource("7_4twxn")
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer2"]
+[node name="ItemSlot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer2"]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xipv1")
+script = ExtResource("7_4twxn")
 
 [node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer3"]
+[node name="ItemSlot3" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/CenterContainer3"]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xipv1")
+script = ExtResource("7_4twxn")
 
 [node name="ScrollContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

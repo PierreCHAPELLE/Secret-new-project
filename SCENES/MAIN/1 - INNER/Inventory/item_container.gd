@@ -16,3 +16,8 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	SignalBus.Hide_Item_Detail.emit()
 	pass # Replace with function body.
+
+
+func _get_drag_data(at_position: Vector2) -> Item_Container:
+	
+	return self

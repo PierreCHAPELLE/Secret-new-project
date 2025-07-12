@@ -12,5 +12,5 @@ script = ExtResource("1_04ta4")
 visual = SubResource("AtlasTexture_ibmev")
 name = "Sword"
 description = "Ceci est un test"
-bonus_type = Array[int]([])
+List_of_Bonus = Array[int]([0, 0, 2, 1, 3, 4])
 metadata/_custom_type_script = "uid://bn125d7k68876"

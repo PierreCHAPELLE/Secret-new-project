@@ -16,7 +16,7 @@ func _on_button_pressed() -> void:
 		animation_player.play("CLOSE")
 		deplayed = false
 	
-	pass # Replace with function body.
+	pass
 
 
 func _process(delta: float) -> void:

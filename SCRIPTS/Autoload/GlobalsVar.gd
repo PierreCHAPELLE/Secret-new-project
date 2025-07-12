@@ -15,12 +15,17 @@ var default_losing_dial : DialogueResource = preload("uid://c28dmoutvwj8m")
 
 
 
+#region STUFF HOLD BY PLAYER
+var Current_Gold :int = 0
+#endregion
+
 #region DATA_SCENE
 var DISPLAYED_FIGHTER = preload("uid://ddgm8cwaxuv0d")
 var DISPLAYED_HERO = preload("uid://dvnum3uveltg")
 var FIGHTER = preload("uid://bvfvfuyp0w2mo")
 var HP_INDICATEUR = preload("uid://bi35m6irf0n7k")
 var ITEM_CONTAINER = preload("uid://v52yts8bhqal")
+var BONUS_DISPLAY = preload("uid://cu26mas22cmxb")
 #endregion
 
 

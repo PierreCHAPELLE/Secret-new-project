@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ckxaf4t7cong3"]
+[gd_scene load_steps=26 format=3 uid="uid://ckxaf4t7cong3"]
 
 [ext_resource type="Script" uid="uid://8iikev36c1oc" path="res://SCENES/MAIN/MAIN.gd" id="1_rf5wo"]
 [ext_resource type="Script" uid="uid://bs8ek84fttlnv" path="res://SCENES/MAIN/1 - INNER/INNER_UI.gd" id="2_85okl"]
@@ -6,13 +6,11 @@
 [ext_resource type="Script" uid="uid://n2dhucmbp40m" path="res://SCENES/MAIN/2 - CENTER/CENTER_UI.gd" id="3_fw155"]
 [ext_resource type="Script" uid="uid://dwlmi13qtluvj" path="res://SCENES/MAIN/1 - INNER/Squad/ally_squad_zone.gd" id="3_s6idh"]
 [ext_resource type="Texture2D" uid="uid://cc0ylx5o23lxy" path="res://ASSETS/VISUAL/UI-visual/panels-export.png" id="4_dveii"]
-[ext_resource type="Script" uid="uid://bn125d7k68876" path="res://SCRIPTS/Custom_Resource/ItemResource.gd" id="4_hxj2i"]
+[ext_resource type="Resource" uid="uid://baahblwn3pbdc" path="res://DATA/HERO_data.tres" id="4_varbs"]
 [ext_resource type="Texture2D" uid="uid://dfelogv00rxvb" path="res://ASSETS/RESOURCE/Palet/InPalette.png" id="5_dveii"]
-[ext_resource type="Script" uid="uid://ch3d4o1n3313i" path="res://SCRIPTS/Custom_Resource/Player_Data.gd" id="5_varbs"]
 [ext_resource type="PackedScene" uid="uid://dyvxfv1121nb8" path="res://SCENES/MAIN/1 - INNER/Inventory/inventory.tscn" id="5_vhmgw"]
 [ext_resource type="Script" uid="uid://y2g83e71txtg" path="res://SCENES/MAIN/2 - CENTER/3 -Action_ZONE/ACTION_UI.gd" id="6_85okl"]
 [ext_resource type="PackedScene" uid="uid://cbiq60fq5wx" path="res://SCENES/MAIN/2 - CENTER/1 - Fight_ZONE/fight_zone.tscn" id="6_cjseh"]
-[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="6_varbs"]
 [ext_resource type="Texture2D" uid="uid://snaj2hci76ah" path="res://ASSETS/RESOURCE/Palet/OutPalette.png" id="6_xxxxf"]
 [ext_resource type="Script" uid="uid://d4gyd1cosc7q4" path="res://SCENES/MAIN/2 - CENTER/3 -Action_ZONE/Selected_tile.gd" id="7_fw155"]
 [ext_resource type="Script" uid="uid://box27fmln326u" path="res://SCENES/MAIN/2 - CENTER/2 - World_ZONE/World_ZONE.gd" id="8_cjseh"]
@@ -25,25 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://dmvssq1psbumd" path="res://ASSETS/VISUAL/UI-visual/doted_line.png" id="19_hxj2i"]
 [ext_resource type="PackedScene" uid="uid://m731pv10h7ri" path="res://SCENES/UI/item_information.tscn" id="24_1w7uk"]
 [ext_resource type="Script" uid="uid://i0y0grt846o0" path="res://SCENES/MAIN/canvas_layer.gd" id="24_mjd8i"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1w7uk"]
-atlas = ExtResource("6_varbs")
-region = Rect2(126, 126, 18, 18)
-
-[sub_resource type="Resource" id="Resource_1w7uk"]
-script = ExtResource("5_varbs")
-level = 0
-Current_Exp = 0
-Exp_to_next_level = 10
-MAX_HP = 0
-visual = SubResource("AtlasTexture_1w7uk")
-name = "Player"
-HP = 10
-ATK = 2
-attack_type = 0
-bonus_type = Array[int]([])
-item_wore = Array[ExtResource("4_hxj2i")]([])
-metadata/_custom_type_script = "uid://ch3d4o1n3313i"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxxxf"]
 texture = ExtResource("4_dveii")
@@ -104,7 +83,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_s6idh")
-Hero_DATA = SubResource("Resource_1w7uk")
+Hero_DATA = ExtResource("4_varbs")
 
 [node name="Inventory" parent="HBoxContainer/INNER_UI/VBoxContainer" instance=ExtResource("5_vhmgw")]
 layout_mode = 2
@@ -142,7 +121,7 @@ disable_3d = true
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(2, 2)
+size = Vector2i(537, 134)
 render_target_update_mode = 4
 
 [node name="World" parent="HBoxContainer/CENTER_UI/World_Zone/SubViewportContainer/SubViewport" instance=ExtResource("11_s6idh")]
@@ -339,8 +318,31 @@ theme_override_constants/margin_bottom = 200
 
 [node name="Item_Information" parent="CanvasLayer/MarginContainer" instance=ExtResource("24_1w7uk")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 600
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 600
+theme_override_constants/margin_bottom = 200
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "LEVEL MENU"
 
 [connection signal="pressed" from="HBoxContainer/INNER_UI/VBoxContainer/ready" to="HBoxContainer/CENTER_UI/Fight_Zone" method="_on_ready_pressed"]
 [connection signal="pressed" from="ENDING_SCREEN/VBoxContainer/Button" to="ENDING_SCREEN" method="_on_button_pressed"]

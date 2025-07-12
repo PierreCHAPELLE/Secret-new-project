@@ -21,3 +21,9 @@ signal Show_Item_Detail(item : ItemResource)
 
 @warning_ignore("unused_signal")
 signal Hide_Item_Detail()
+
+@warning_ignore("unused_signal")
+signal Getting_EXP(EXP: int)
+
+@warning_ignore("unused_signal")
+signal Level_Up(a)

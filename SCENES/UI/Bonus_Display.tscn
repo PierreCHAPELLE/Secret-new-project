@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://cu26mas22cmxb"]
 
-[ext_resource type="Texture2D" uid="uid://lg22ycu1wujk" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/item.png" id="1_ut0wa"]
-[ext_resource type="Script" uid="uid://m3ls5puib61l" path="res://SCENES/UI/bonus_ui.gd" id="2_pyhk6"]
-[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="3_qr5u1"]
+[ext_resource type="Texture2D" uid="uid://lg22ycu1wujk" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_NoOutline_NoBG/item.png" id="1_xthl2"]
+[ext_resource type="Script" uid="uid://m3ls5puib61l" path="res://SCENES/UI/bonus_ui.gd" id="2_m35y0"]
+[ext_resource type="Texture2D" uid="uid://dck1ye0d6kepe" path="res://ASSETS/VISUAL/TileSet-visual/test 18-18/Trans_Outline/Character.png" id="3_0fg33"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mtbs"]
-atlas = ExtResource("1_ut0wa")
+atlas = ExtResource("1_xthl2")
 region = Rect2(93, 129, 12, 12)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1g8e"]
@@ -17,19 +17,19 @@ texture_margin_bottom = 4.0
 region_rect = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_luwmd"]
-atlas = ExtResource("3_qr5u1")
+atlas = ExtResource("3_0fg33")
 region = Rect2(270, 108, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrfke"]
-atlas = ExtResource("3_qr5u1")
+atlas = ExtResource("3_0fg33")
 region = Rect2(288, 108, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxrr0"]
-atlas = ExtResource("3_qr5u1")
+atlas = ExtResource("3_0fg33")
 region = Rect2(216, 108, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iemsa"]
-atlas = ExtResource("3_qr5u1")
+atlas = ExtResource("3_0fg33")
 region = Rect2(288, 90, 18, 18)
 
 [node name="Item_Container2" type="PanelContainer"]
@@ -38,12 +38,20 @@ custom_minimum_size = Vector2(42, 42)
 offset_right = 42.0
 offset_bottom = 45.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k1g8e")
-script = ExtResource("2_pyhk6")
+script = ExtResource("2_m35y0")
 List_OF_Visual = Array[Texture2D]([SubResource("AtlasTexture_luwmd"), SubResource("AtlasTexture_nrfke"), SubResource("AtlasTexture_lxrr0"), SubResource("AtlasTexture_iemsa"), null])
 metadata/_custom_type_script = "uid://djxal6iy00yoq"
 
-[node name="Label2" type="TextureRect" parent="."]
+[node name="Visual" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
+
+[node name="Label_visual" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "LS"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -52,3 +60,4 @@ theme_override_colors/font_shadow_color = Color(0.114897, 0.114897, 0.114897, 1)
 theme_override_font_sizes/font_size = 36
 text = "1"
 horizontal_alignment = 1
+vertical_alignment = 2
